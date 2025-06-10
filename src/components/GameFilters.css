@@ -1,0 +1,57 @@
+/* AllGames.css o GameFilters.css */
+
+.filters-wrapper {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #222;   /* sfondo scuro */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.6);
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filters-wrapper label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.filters-wrapper select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #333;
+  color: #eee;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filters-wrapper select:hover,
+.filters-wrapper select:focus {
+  background-color: #444;
+  outline: none;
+}
+
+.filters-wrapper p {
+  margin: 8px 0 4px;
+  font-weight: 600;
+}
+
+.filters-wrapper ul {
+  list-style: none;  /* rimuove i pallini */
+  padding-left: 0;
+  margin: 0;
+}
+
+.filters-wrapper ul li {
+  background-color: #333;
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-align: center;
+}

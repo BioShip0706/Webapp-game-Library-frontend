@@ -1,0 +1,39 @@
+.gioco {
+  background-color: #1e1e1e;
+  color: #eee;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.7);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  
+}
+
+.gioco:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.9);
+}
+
+.gioco img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.gioco h2 {
+  font-size: 1.2rem;
+  margin: 0 0 6px 0;
+  text-align: center;
+}
+
+.gioco p {
+  font-size: 0.9rem;
+  margin: 2px 0;
+  text-align: center;
+}

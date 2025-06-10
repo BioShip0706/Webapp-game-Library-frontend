@@ -1,0 +1,79 @@
+.app-footer {
+    background-color: #333; /* Colore di sfondo scuro */
+    color: #fff; /* Testo bianco */
+    padding: 30px 20px; /* Spaziatura interna */
+    text-align: center; /* Centra il testo */
+    margin-top: auto; /* Spinge il footer in fondo alla pagina se il contenuto è scarso */
+    border-top: 1px solid #555; /* Bordo superiore leggero */
+}
+
+.footer-content {
+    max-width: 1200px; /* Larghezza massima del contenuto */
+    margin: 0 auto; /* Centra il contenuto orizzontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Spazio tra gli elementi principali */
+}
+
+/* Stili per il testo del copyright */
+.app-footer p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Stili per la navigazione del footer */
+.footer-nav ul {
+    list-style: none; /* Rimuove i pallini delle liste */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permette ai link di andare a capo su schermi piccoli */
+    justify-content: center;
+    gap: 20px; /* Spazio tra i link */
+}
+
+.footer-nav a {
+    color: #fff; /* Colore link bianco */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    font-size: 0.95rem;
+    transition: color 0.3s ease; /* Transizione fluida al passaggio del mouse */
+}
+
+.footer-nav a:hover {
+    color: #007bff; /* Cambia colore al passaggio del mouse (un blu vivace) */
+}
+
+/* Stili per i link social */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px; /* Spazio sopra i link social */
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #007bff; /* Cambia colore al passaggio del mouse */
+}
+
+/* Media query per schermi più grandi (opzionale, per layout orizzontale) */
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row; /* Layout orizzontale su schermi più grandi */
+        justify-content: space-between; /* Spazio equo tra gli elementi */
+    }
+
+    .footer-nav ul {
+        gap: 30px;
+    }
+
+    .social-links {
+        margin-top: 0; /* Rimuovi margine superiore se in layout orizzontale */
+    }
+}

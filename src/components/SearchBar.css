@@ -1,0 +1,68 @@
+/* Container della barra di ricerca dentro la navbar */
+.search-container {
+  width: 455px;        /* puoi regolare la larghezza */
+  position: relative;  /* per poter posizionare i risultati in modo assoluto rispetto a questo */
+}
+
+/* Input di ricerca */
+.search-container input[type="search"] {
+  width: 77%;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Lista risultati posizionata sotto la navbar, fissa e allineata alla searchbar */
+.results-list {
+  position: fixed;      /* posizione fissa per rimanere visibile durante scroll */
+  top: 70px;            /* esattamente sotto la navbar alta 80px */
+  left: 50%;            /* centro orizzontale viewport */
+  transform: translateX(-50%); /* per centrare la lista */
+  width: 350px;         /* stessa larghezza della search-container */
+  max-height: 500px;    /* altezza massima con scroll interno */
+  overflow-y: auto;     /* scroll verticale se troppi risultati */
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1050;        /* sopra navbar */
+}
+
+/* Ogni singolo risultato */
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid #aa9797;
+  text-decoration: none;
+  color: #222;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease;
+  align-items: center;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item:hover {
+  background-color: #a8a6a68f;
+}
+
+.result-left {
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.result-right {
+  text-align: right;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.85rem;
+  min-width: 60px;
+}

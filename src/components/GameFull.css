@@ -1,0 +1,50 @@
+.game-full {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.game-details {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  background-color: #4e4c4c;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-image {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.game-info {
+  flex: 1;
+}
+
+.game-info h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.game-info p {
+  margin: 6px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.error-msg {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}
+
+.loading-msg {
+  text-align: center;
+  font-style: italic;
+}
