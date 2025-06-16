@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import "./GameFilters.css"
@@ -25,6 +25,8 @@ function GameFilters()
 
     const [generiSelezionati, setGeneriSelezionati] = useState(inizialiGeneri);
     const [piattaformeSelezionate, setPiattaformeSelezionate] = useState(inizialiPiattaforme);
+
+    const navigate = useNavigate();
 
     function handleSelezioneGenere(e)
     {
@@ -61,6 +63,30 @@ function GameFilters()
     },[])
 
 
+    function handleFiltroGiochi()
+    {
+        const queryString = `?genreIds=${generiSelezionati.join(",")}&platformIds=${piattaformeSelezionate.join(",")}`;
+
+        navigate(
+            {
+                pathname: "/game/filters",
+                search: queryString,
+            },
+            {
+                state: {generiSelezionati: generiSelezionati, piattaformeSelezionate: piattaformeSelezionate},
+            }
+        );
+
+    }
+
+    function handleCleanFiltri()
+    {
+        setGeneriSelezionati([]);
+        setPiattaformeSelezionate([]);
+        navigate("/");
+    }
+
+
     return(
         <>
             <div  className="filters-wrapper">
@@ -78,11 +104,11 @@ function GameFilters()
                 </select>
                 
     
-                <p>Generi selezionati: </p>
+                {/*<p>Generi selezionati: </p>*/}
                 <ul>
                     {generiSelezionati.map(id => {
                         const genere = generi.find(g => g.id == id);
-                        return <li key={id}>{genere ? genere.name : "Sconosciuto"}</li>;
+                        return <li key={id} className="selectedGenre">{genere ? genere.name : "Sconosciuto"}</li>;
                     })}
                 </ul>
 
@@ -103,11 +129,11 @@ function GameFilters()
 
                 </select>
 
-                <p>Piattaforme selezionate: </p>
+                {/*<p>Piattaforme selezionate: </p>*/}
                 <ul>
                     {piattaformeSelezionate.map(id => {
                         const piattaforma = piattaforme.find(g => g.id == id);
-                        return <li key={id}>{piattaforma ? piattaforma.name : "Sconosciuto"}</li>;
+                        return <li key={id} className="selectedPlatform">{piattaforma ? piattaforma.name : "Sconosciuto"}</li>;
                     })}
                 </ul>
 
@@ -115,9 +141,14 @@ function GameFilters()
                     <button disabled={generiSelezionati >= 3 || piattaformeSelezionate >= 3}>Filtra Giochi</button>
                 </Link> */}
 
-                <Link to={{pathname: "/game/filters", search: `?genreIds=${generiSelezionati.join(",")}&platformIds=${piattaformeSelezionate.join(",")}`}} state={{generiSelezionati: generiSelezionati, piattaformeSelezionate: piattaformeSelezionate}}> {/*Il link composto da 2 filtri */}
-                    <button disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Filtra Giochi</button>
-                </Link>
+                {/* <Link to={{pathname: "/game/filters", search: `?genreIds=${generiSelezionati.join(",")}&platformIds=${piattaformeSelezionate.join(",")}`}} state={{generiSelezionati: generiSelezionati, piattaformeSelezionate: piattaformeSelezionate}}> 
+                    <button className="filter-button"  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Filtra Giochi</button>
+                </Link> */}
+
+                <button className="clean-button" onClick={handleCleanFiltri}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Pulisci Filtri</button>
+               
+                <button className="filter-button" onClick={handleFiltroGiochi}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Filtra Giochi</button>
+                
 
             </div>
         

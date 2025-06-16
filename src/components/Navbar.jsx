@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -24,11 +25,16 @@ function Navbar() {
             <SearchBar></SearchBar>
           
             
+            
 
-            <a href="/registra" className="btn-login">
+            <Link to="/register">
+              <div className="btn-login">
               <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" alt="User Icon" className="icon-user" />
               Accedi
-            </a>
+              </div>
+            </Link>
+
+
         </nav>
 
           

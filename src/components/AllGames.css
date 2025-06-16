@@ -5,19 +5,7 @@
   min-height: calc(100vh - 60px); /* Assume navbar è 60px */
 }
 
-/* Filtro a sinistra, verticale */
-.filters-wrapper {
-  width: 250px;
-  background-color: #222;
-  padding: 20px;
-  border-radius: 8px;
-  color: #eee;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-self: stretch; /* Allunga verticalmente */
-}
+
 
 /* Lista giochi */
 .games-container {

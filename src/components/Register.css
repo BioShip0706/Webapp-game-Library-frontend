@@ -1,0 +1,108 @@
+/* Register.css */
+
+/*
+    Assicurati che gli stili globali del tuo <body> (sfondo scuro, testo chiaro)
+    siano definiti in un file CSS che viene caricato a livello più alto della tua applicazione
+    (ad esempio, App.css o index.css)
+*/
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Rimosso min-height: 100vh; e background-color qui per rispettare gli stili del <body> */
+    padding: 20px; /* Aggiunge spazio attorno al box per schermi piccoli */
+    box-sizing: border-box; /* Include il padding nella larghezza/altezza totale */
+}
+
+.register-box {
+    background-color: #4a4a4a; /* Sfondo leggermente più chiaro per il box, visibile sul body scuro */
+    padding: 40px; /* Spazio interno al box */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Ombra più forte per un contrasto maggiore */
+    text-align: center; /* Centra il testo all'interno del box */
+    width: 100%;
+    max-width: 400px; /* Larghezza massima per il box del form */
+    border: 1px solid #5c5c5c; /* Bordo sottile per definire il box */
+}
+
+.register-box h2 {
+    margin-bottom: 30px; /* Spazio sotto il titolo */
+    color: #e0e0e0; /* Colore del testo per il titolo, coerente con il tema chiaro */
+    font-size: 2.2em; /* Dimensione del titolo */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Leggera ombra sul testo del titolo */
+}
+
+.input-group {
+    margin-bottom: 20px; /* Spazio tra i gruppi di input */
+    text-align: left; /* Allinea le label a sinistra */
+}
+
+.input-group label {
+    display: block; /* La label occupa l'intera larghezza */
+    margin-bottom: 8px; /* Spazio sotto la label */
+    color: #c0c0c0; /* Grigio chiaro per le label */
+    font-weight: bold; /* Testo in grassetto per le label */
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"],
+.input-group input[type="email"] {
+    width: 100%; /* Larghezza piena dell'input */
+    padding: 12px; /* Padding interno all'input */
+    border: 1px solid #666; /* Bordo scuro per gli input */
+    border-radius: 5px; /* Angoli arrotondati per gli input */
+    font-size: 1em; /* Dimensione del font per il testo digitato */
+    box-sizing: border-box; /* Assicura che il padding non aumenti la larghezza totale */
+    background-color: #333; /* Sfondo scuro per gli input */
+    color: #e0e0e0; /* Testo chiaro all'interno degli input */
+}
+
+/* Stili per gli input quando sono in focus (cliccati/selezionati) */
+.input-group input[type="text"]:focus,
+.input-group input[type="password"]:focus,
+.input-group input[type="email"]:focus {
+    border-color: #00aaff; /* Colore del bordo più luminoso quando in focus */
+    outline: none; /* Rimuove l'outline predefinito del browser */
+    box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.4); /* Effetto "glow" attorno all'input in focus */
+}
+
+.register-button {
+    background-color: #00aaff; /* Blu vibrante per il pulsante */
+    color: white; /* Testo bianco */
+    padding: 12px 20px; /* Padding interno al pulsante */
+    border: none; /* Rimuove il bordo predefinito */
+    border-radius: 5px; /* Angoli arrotondati */
+    font-size: 1.1em; /* Dimensione del font */
+    cursor: pointer; /* Cambia il cursore a "mano" quando si passa sopra */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transizioni per hover e active */
+    width: 100%; /* Larghezza piena del pulsante */
+    margin-top: 20px; /* Spazio sopra il pulsante */
+}
+
+.register-button:hover {
+    background-color: #0088cc; /* Blu leggermente più scuro al passaggio del mouse */
+    transform: translateY(-2px); /* Leggero sollevamento del pulsante */
+}
+
+.register-button:active {
+    transform: translateY(0); /* Ritorno alla posizione originale quando cliccato */
+}
+
+.login-prompt {
+    margin-top: 30px; /* Spazio sopra il prompt */
+    color: #c0c0c0; /* Grigio chiaro per il testo del prompt */
+    font-size: 0.95em; /* Dimensione del font leggermente più piccola */
+}
+
+.login-link {
+    color: #00aaff; /* Colore del link, coerente con il pulsante */
+    text-decoration: none; /* Rimuove la sottolineatura predefinita */
+    font-weight: bold; /* Testo in grassetto */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Transizioni per hover */
+}
+
+.login-link:hover {
+    color: #0088cc; /* Colore più scuro al passaggio del mouse */
+    text-decoration: underline; /* Sottolineatura al passaggio del mouse */
+}

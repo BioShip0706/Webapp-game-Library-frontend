@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-height: 800px;
 }
 
 .filters-wrapper label {
@@ -47,11 +48,84 @@
   margin: 0;
 }
 
-.filters-wrapper ul li {
-  background-color: #333;
+
+
+/* .filters-wrapper ul li {
+  background-color: hwb(0 27% 67%);
   margin-bottom: 6px;
   padding: 6px 10px;
   border-radius: 6px;
   font-size: 0.95rem;
   text-align: center;
+} */
+
+.selectedGenre {
+  background-color: hwb(54 9% 61%);
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.selectedPlatform {
+  background-color: hwb(191 11% 72%);
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+
+
+.filter-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+    width: 100%; /* Make the button full width of its container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.filter-button:hover {
+    background-color: #0056b3;
+}
+
+.filter-button:disabled {
+    background-color: #6457577a;
+    color: rgb(168, 129, 129);
+    cursor: not-allowed;
+}
+
+/*Clean filters button */
+
+.clean-button {
+    background-color: #812f2f;
+    color: rgb(255, 255, 255);
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    width: 100%; /* Make the button full width of its container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    align-items: center;
+}
+
+.clean-button:hover {
+    background-color: #722222;
+}
+
+.clean-button:disabled {
+    background-color: #6457577a;
+    color: rgb(168, 129, 129);
+    cursor: not-allowed;
 }

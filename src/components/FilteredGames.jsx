@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import GameCard from "./GameCard";
 import NavBar from "./NavBar";
 import GameFilters from "./GameFilters";
-import "./FilteredGames.css"
+import "./AllGames.css"
 import Footer from "./Footer";
 
 function FilteredGames() 

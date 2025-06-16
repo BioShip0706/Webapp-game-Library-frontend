@@ -8,16 +8,22 @@ import AllGames from './components/AllGames'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import GameFull from './components/GameFull'
 import FilteredGames from './components/FilteredGames'
+import Register from './components/Register'
+import Login from './components/Login'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AllGames></AllGames>,
   },
-  // {
-  //   path: "/register",
-  //   element: <Register></Register>
-  // }
+  {
+    path: "/register",
+    element: <Register></Register>
+  },
+  {
+    path: "/login",
+    element: <Login></Login>
+  },
   // {
   //   path: "/AllGames/:gameId",
   //   element: <GameFull></GameFull>
