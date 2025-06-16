@@ -42,7 +42,7 @@ function GameFilters()
 
     function handleSelezionePiattaforma(e)
     {
-        const selectedPlatform = e.target.value; //prendo per esempio "Horror" però il value in questo caso è l'id del genere,
+        const selectedPlatform = e.target.value; //prendo per esempio "SWITHC" però il value in questo caso è l'id della piattaforma,
 
         if(selectedPlatform !== "" && !piattaformeSelezionate.includes(selectedPlatform) && piattaformeSelezionate.length < 3) //se non è già dentro l'array salvo l'id all'interno
         {
@@ -145,7 +145,7 @@ function GameFilters()
                     <button className="filter-button"  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Filtra Giochi</button>
                 </Link> */}
 
-                <button className="clean-button" onClick={handleCleanFiltri}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Pulisci Filtri</button>
+                {(generiSelezionati.length >= 1 || piattaformeSelezionate.length >= 1) && <button className="clean-button" onClick={handleCleanFiltri}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Pulisci Filtri</button>}
                
                 <button className="filter-button" onClick={handleFiltroGiochi}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Filtra Giochi</button>
                 

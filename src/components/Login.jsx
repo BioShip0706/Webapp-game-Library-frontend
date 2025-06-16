@@ -8,6 +8,8 @@ function Login()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const [errorMessage, setErrorMessage] = useState('');
+
 
     const navigate = useNavigate();
 
@@ -17,7 +19,8 @@ function Login()
         password: password,
     };
 
-    const handleRegister = async (e) => {
+    async function handleRegister(e)
+    {
         e.preventDefault(); // Prevent default form submission
 
         try {
@@ -29,25 +32,30 @@ function Login()
                 body: JSON.stringify(signUpData)
             });
 
-            if (response.ok) {
-                // Registration successful
+            if (response.ok) //ricevo un json
+            { 
+                const loginData = await response.json();
+                // Login con succeso
                 alert('Login successful!');
-                navigate('/'); // Redirect to login page
-            } else {
-                // Registration failed
-                const errorData = await response.json();
-                alert(`Login failed: ${errorData.message || 'Something went wrong.'}`);
+                localStorage.setItem("token",loginData.token) //settare token 
+                navigate('/'); // Riporto alla home
+            } 
+            else //altrimento ricevo solo una stringa
+            {
+                // login failed
+                const errorData = await response.text();
+                setErrorMessage(errorData || "Credenziali errate");
             }
         } catch (error) {
             console.error('Error during login:', error);
-            alert('An unexpected error occurred. Please try again.');
+            setErrorMessage(error.message)
         }
     };
 
     return (
         <div className="register-container">
             <div className="register-box">
-                <h2>Create Your Account</h2>
+                <h2>Accedi</h2>
                 <form onSubmit={handleRegister}>
                     <div className="input-group">
                         <label htmlFor="username">Username</label>
@@ -57,6 +65,8 @@ function Login()
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
+                            minLength={4}
+                            maxLength={15}
                         />
                     </div>
                     <div className="input-group">
@@ -67,13 +77,21 @@ function Login()
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+                            minLength={8}
+                            maxLength={20}
                         />
                     </div>
-                    <button type="submit" className="register-button">Register</button>
+
+                    {errorMessage && (<p className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{errorMessage}</p>)}
+
+                    <button type="submit" className="register-button">Accedi</button>
+
                 </form>
+
                 <p className="login-prompt">
-                    New here? <Link to="/register" className="login-link">Register</Link>
+                    Sei un nuovo Utente? <Link to="/register" className="login-link">Registrati</Link>
                 </p>
+
             </div>
         </div>
     );

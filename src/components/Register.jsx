@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import "./Register.css"
+import './Register.css';
 
 function Register() 
 {
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
 
+    const [errorMessage, setErrorMessage] = useState('');
+
     const navigate = useNavigate();
 
-    const signUpData =
+    async function handleRegister(e) 
     {
-        username: username,
-        name: firstName,
-        surname: lastName,
-        email: email,
-        password: password
-    };
+        e.preventDefault();
 
-    const handleRegister = async (e) => {
-        e.preventDefault(); // Prevent default form submission
+        const signUpData = {
+            username,
+            name: firstName,
+            surname: lastName,
+            email,
+            password
+        };
 
         try {
             const response = await fetch('http://localhost:8080/auth/signup', {
@@ -34,28 +35,51 @@ function Register()
                 body: JSON.stringify(signUpData)
             });
 
-            if (response.ok) {
-                // Registration successful
-                alert('Registration successful! Please log in.');
-                navigate('/login'); // Redirect to login page
-            } else {
-                // Registration failed
-                const errorData = await response.json();
-                alert(`Registration failed: ${errorData.message || 'Something went wrong.'}`);
+            if (response.ok) //ORA LOGIN AUTOMATICO
+            {
+
+                const signUpDataLogin = {
+                    username,
+                    password
+                };
+
+                //accesso con dati della registrazione
+                const responseLogin = await fetch('http://localhost:8080/auth/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(signUpDataLogin)
+                });
+
+                if(responseLogin.ok)
+                {
+                    const loginData = await responseLogin.json();
+                    localStorage.setItem("token",loginData.token)
+                    navigate('/'); // Success: redirect to login
+
+                }
+            } 
+            else 
+            {
+                const errorData = await response.text();
+                //console.error('Errore durante la registrazione:'  + "dentro else");
+                setErrorMessage(errorData || 'Compilare correttamente i campi!');
             }
         } catch (error) {
-            console.error('Error during registration:', error);
-            alert('An unexpected error occurred. Please try again.');
+            console.error('Errore durante la registrazione:', error);
+            setErrorMessage(error.message);
         }
     };
 
     return (
         <div className="register-container">
             <div className="register-box">
-                <h2>Create Your Account</h2>
+                <h2>Crea il tuo Account</h2>
+
                 <form onSubmit={handleRegister}>
                     <div className="input-group">
-                        <label htmlFor="firstName">Name</label>
+                        <label htmlFor="firstName">Nome</label>
                         <input
                             type="text"
                             id="firstName"
@@ -64,8 +88,9 @@ function Register()
                             required
                         />
                     </div>
+
                     <div className="input-group">
-                        <label htmlFor="lastName">Surname</label>
+                        <label htmlFor="lastName">Cognome</label>
                         <input
                             type="text"
                             id="lastName"
@@ -74,16 +99,18 @@ function Register()
                             required
                         />
                     </div>
+
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
                         <input
-                            type="email" // Use type="email" for better validation
+                            type="email"
                             id="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </div>
+
                     <div className="input-group">
                         <label htmlFor="username">Username</label>
                         <input
@@ -92,8 +119,11 @@ function Register()
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
+                            minLength={4}
+                            maxLength={15}
                         />
                     </div>
+
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
                         <input
@@ -102,12 +132,19 @@ function Register()
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+                            minLength={8}
+                            maxLength={20}
                         />
                     </div>
-                    <button type="submit" className="register-button">Register</button>
+
+                    {errorMessage && (<p className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{errorMessage}</p>)}
+
+                    <button type="submit" className="register-button">Registrati</button>
+
                 </form>
+
                 <p className="login-prompt">
-                    Already have an account? <Link to="/login" className="login-link">Log In</Link>
+                    Hai già un account? <Link to="/login" className="login-link">Log In</Link>
                 </p>
             </div>
         </div>
