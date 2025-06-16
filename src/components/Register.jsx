@@ -56,6 +56,7 @@ function Register()
                 {
                     const loginData = await responseLogin.json();
                     localStorage.setItem("token",loginData.token)
+                    localStorage.setItem("username",loginData.username)
                     navigate('/'); // Success: redirect to login
 
                 }

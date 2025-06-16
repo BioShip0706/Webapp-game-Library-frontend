@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import SearchBar from "./SearchBar";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-function Navbar() {
+
+
+function Navbar() 
+{
+
+  const [username,setUsername] = useState(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    setUsername(localStorage.getItem("username"));
+  },[location]) //il navigate aggiorna la loction quindi ricarica questo e tutto il componente
+
+  function handleLogout()
+  {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    navigate("/");
+  }
+
   return (
     <>
         <nav className="navbar">
@@ -25,14 +45,29 @@ function Navbar() {
             <SearchBar></SearchBar>
           
             
-            
-
-            <Link to="/register">
+            {username ? 
+            (
+              <div className="btn-login" onClick={handleLogout} style={{ cursor: 'pointer' }}>
+              <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" alt="User Icon" className="icon-user" />
+              {username}
+              </div>
+            ) 
+            : 
+            (<Link to="/login">
               <div className="btn-login">
               <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" alt="User Icon" className="icon-user" />
               Accedi
               </div>
-            </Link>
+            </Link>)}
+
+
+
+            {/* <Link to="/login">
+              <div className="btn-login">
+              <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" alt="User Icon" className="icon-user" />
+              Accedi
+              </div>
+            </Link> */}
 
 
         </nav>

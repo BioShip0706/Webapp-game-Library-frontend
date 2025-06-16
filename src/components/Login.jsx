@@ -36,8 +36,9 @@ function Login()
             { 
                 const loginData = await response.json();
                 // Login con succeso
-                alert('Login successful!');
+                //alert('Login successful!');
                 localStorage.setItem("token",loginData.token) //settare token 
+                localStorage.setItem("username",loginData.username) //salvo anche username
                 navigate('/'); // Riporto alla home
             } 
             else //altrimento ricevo solo una stringa
