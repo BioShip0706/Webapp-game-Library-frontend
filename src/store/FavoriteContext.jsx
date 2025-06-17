@@ -26,7 +26,7 @@ function FavoriteContextProvider({children})
     },[userId])
 
     return (
-        <FavoriteContext.Provider value={{favoriteIds,setFavoriteIds, setUserId}}>
+        <FavoriteContext.Provider value={{favoriteIds,setFavoriteIds, setUserId, userId}}>
             {children}
         </FavoriteContext.Provider>
     )
