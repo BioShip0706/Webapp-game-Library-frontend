@@ -6,6 +6,7 @@ import GameFilters from "./GameFilters";
 import "./GameFull.css"
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
+import FavoriteButton from "./FavoriteButton";
 
 function GameFull() 
 {
@@ -58,19 +59,24 @@ function GameFull()
 
         {game && (
             <div className="game-details">
-            <img src={game.imageURL} alt={game.title} className="game-image" />
+              <img src={game.imageURL} alt={game.title} className="game-image" />
 
-            <div className="game-info">
-              <h2>{game.title}</h2>
-              <p><strong>Descrizione:</strong> {game.description}</p>
-              <p><strong>Sviluppatore:</strong> {game.developer}</p>
-              <p><strong>Pubblicato da:</strong> {game.publisher}</p>
-              <p><strong>Data di uscita:</strong> {game.releaseDate}</p>
-              <p><strong>Voto:</strong> {game.score}/10</p>
+              <div className="game-info">
+                <h2>{game.title}</h2>
+                <p><strong>Descrizione:</strong> {game.description}</p>
+                <p><strong>Sviluppatore:</strong> {game.developer}</p>
+                <p><strong>Pubblicato da:</strong> {game.publisher}</p>
+                <p><strong>Data di uscita:</strong> {game.releaseDate}</p>
+                <p><strong>Voto:</strong> {game.score}/10</p>
 
-              <p><strong>Piattaforme:</strong> {game.platforms?.map(p => p.name).join(", ")}</p>
-              <p><strong>Generi:</strong> {game.genres?.map(g => g.name).join(", ")}</p>
-            </div>
+                <p><strong>Piattaforme:</strong> {game.platforms?.map(p => p.name).join(", ")}</p>
+                <p><strong>Generi:</strong> {game.genres?.map(g => g.name).join(", ")}</p>
+                
+                {console.log(gameId)}
+                {console.log("IL GIOCO ID è: " + gameId)}
+                <FavoriteButton giocoId = {game.id} stile = "gameFullHeart"></FavoriteButton>
+
+              </div>
             </div>
         )}
 

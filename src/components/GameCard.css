@@ -62,7 +62,7 @@
 
 
 
-.gioco-cuore {
+.gameCardHeart {
   position: absolute;
   top: 10px;
   right: 8px;
@@ -75,7 +75,8 @@
   display: none;
 }
 
-.gioco:hover .gioco-cuore
+
+.gioco:hover .gameCardHeart
 {
   display: block;
 }

@@ -3,6 +3,7 @@ import "./GameCard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FavoriteContext } from "../store/FavoriteContext";
+import FavoriteButton from "./FavoriteButton";
 
 
 function GameCard({gioco})
@@ -44,9 +45,10 @@ function GameCard({gioco})
         <>
                     
                     <Link to={`/game/${gioco.id}`} key={gioco.id} className="gioco">
-                        <div className="gioco-cuore" onClick={handlePreferito}>
+                        {/* <div className="gioco-cuore" onClick={handlePreferito}>
                             {favoriteIds.includes(gioco.id) ? "💖" : "🤍"} 
-                        </div>
+                        </div> */}
+                        <FavoriteButton giocoId = {gioco.id} stile = "gameCardHeart"></FavoriteButton>
 
                         <img src={gioco.imageURL} alt={gioco.title} />
                         <h2>{gioco.title}</h2>

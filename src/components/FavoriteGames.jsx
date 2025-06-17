@@ -13,7 +13,7 @@ import { useContext } from "react";
 function FavoriteGames()
 {
     const [giochi,setGiochi] = useState([])
-
+    
     const {favoriteIds, setFavoriteIds, userId} = useContext(FavoriteContext)
 
     //recupero tutti i giochi (ancora no paginazione)
