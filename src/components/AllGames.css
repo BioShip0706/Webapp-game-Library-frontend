@@ -1,16 +1,16 @@
 .allgames-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px 1fr; /* sinistra fissa, destra flessibile */
   gap: 20px;
   padding: 20px;
-  min-height: calc(100vh - 60px); /* Assume navbar è 60px */
+  /*min-height: calc(100vh - 60px);*/ /* se hai una navbar */
 }
 
-
-
-/* Lista giochi */
+/* Colonna destra con le cards */
 .games-container {
-  flex: 2;
   display: grid;
-   grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr); /* 5 card per riga */
   gap: 20px;
 }
+
+

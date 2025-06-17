@@ -57,12 +57,15 @@ function FilteredGames()
         <>
             <NavBar />
             <div className="allgames-wrapper">
+
+
                     <GameFilters />
+
                     <div className="games-container">
                         {giochi.map(gioco => (
-                            <Link to={`/game/${gioco.id}`} key={gioco.id} state={{gioco}}>
+                            //<Link to={`/game/${gioco.id}`} key={gioco.id} state={{gioco}}>
                                 <GameCard key={gioco.id} gioco={gioco} />
-                            </Link>
+                            //</Link>
                         ))}
                     </div>
             </div>
