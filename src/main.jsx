@@ -11,6 +11,7 @@ import FilteredGames from './components/FilteredGames'
 import Register from './components/Register'
 import Login from './components/Login'
 import FavoriteGames from './components/FavoriteGames'
+import FavoriteContextProvider from './store/FavoriteContext'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router ={router}/>
+    <FavoriteContextProvider>
+      <RouterProvider router ={router}/>
+    </FavoriteContextProvider>
   </StrictMode>,
 )

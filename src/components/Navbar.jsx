@@ -3,7 +3,8 @@ import "./Navbar.css";
 import SearchBar from "./SearchBar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-
+import { useContext } from "react";
+import { FavoriteContext } from "../store/FavoriteContext";
 
 function Navbar() 
 {
@@ -13,6 +14,9 @@ function Navbar()
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  const {setUserId} = useContext(FavoriteContext)
+
 
   useEffect(() => {
     setUsername(localStorage.getItem("username"));
@@ -27,8 +31,10 @@ function Navbar()
   {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    localStorage.removeItem("id");
     setUsername(null)
     setDropdownOpen(false);
+    setUserId(null)
     navigate("/");
   }
 

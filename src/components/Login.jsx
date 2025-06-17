@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "./Register.css"
 
+import { useContext } from 'react';
+import { FavoriteContext } from '../store/FavoriteContext';
+
 function Login() 
 {
 
@@ -18,6 +21,8 @@ function Login()
         username: username,
         password: password,
     };
+
+    const {setUserId} = useContext(FavoriteContext)
 
     async function handleRegister(e)
     {
@@ -39,6 +44,9 @@ function Login()
                 //alert('Login successful!');
                 localStorage.setItem("token",loginData.token) //settare token 
                 localStorage.setItem("username",loginData.username) //salvo anche username
+                localStorage.setItem("id",loginData.id)
+                setUserId(loginData.id)
+                
                 navigate('/'); // Riporto alla home
             } 
             else //altrimento ricevo solo una stringa

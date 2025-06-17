@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Register.css';
 
+import { useContext } from 'react';
+import { FavoriteContext } from '../store/FavoriteContext';
+
 function Register() 
 {
     const [username, setUsername] = useState('');
@@ -13,6 +16,8 @@ function Register()
     const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
+
+    const {setUserId} = useContext(FavoriteContext)
 
     async function handleRegister(e) 
     {
@@ -57,6 +62,8 @@ function Register()
                     const loginData = await responseLogin.json();
                     localStorage.setItem("token",loginData.token)
                     localStorage.setItem("username",loginData.username)
+                    localStorage.setItem("id",loginData.id)
+                    setUserId(loginData.id)
                     navigate('/'); // Success: redirect to login
 
                 }
