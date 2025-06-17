@@ -6,6 +6,7 @@ import GameCard from "./GameCard";
 import GameFilters from "./GameFilters";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import SearchBar from "./SearchBar";
 
 function AllGames()
 {
@@ -25,6 +26,7 @@ function AllGames()
         <>
 
             <Navbar></Navbar>
+            
 
             <div className="allgames-wrapper">
                 <GameFilters />

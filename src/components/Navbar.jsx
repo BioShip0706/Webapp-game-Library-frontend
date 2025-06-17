@@ -9,6 +9,7 @@ function Navbar()
 {
 
   const [username,setUsername] = useState(null);
+  const [dropdownOpen,setDropdownOpen] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -17,12 +18,21 @@ function Navbar()
     setUsername(localStorage.getItem("username"));
   },[location]) //il navigate aggiorna la loction quindi ricarica questo e tutto il componente
 
+
+  const toggleDropdown = () => {
+    setDropdownOpen(prev => !prev);
+  };
+
   function handleLogout()
   {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    setUsername(null)
+    setDropdownOpen(false);
     navigate("/");
   }
+
+
 
   return (
     <>
@@ -37,15 +47,54 @@ function Navbar()
               
             </a>
 
+            <SearchBar></SearchBar>
+
             {/* <div className="search-container">
               <input type="search" placeholder="Cerca giochi..." />
             </div> */}
 
            
-            <SearchBar></SearchBar>
+            
           
             
-            {username ? 
+
+            <div className="user-menu-container">
+                {username && (
+                    <div 
+                      className={`btn-login dropdown ${dropdownOpen ? 'show' : ''}`} 
+                      onClick={toggleDropdown} 
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <img
+                        src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
+                        alt="User Icon"
+                        className="icon-user"
+                      />
+                      {username}
+
+                      <div className="dropdown-content">
+                        <Link to="/preferiti">Preferiti</Link>
+                        <div onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</div>
+                      </div>
+                    </div>
+                )}
+
+                {!username && (
+                  <Link to="/login">
+                    <div className="btn-login">
+                      <img
+                        src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
+                        alt="User Icon"
+                        className="icon-user"
+                      />
+                      Accedi
+                    </div>
+                  </Link>
+                )}
+            </div>
+
+
+            {/* {username ? 
             (
               <div className="btn-login" onClick={handleLogout} style={{ cursor: 'pointer' }}>
               <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" alt="User Icon" className="icon-user" />
@@ -58,7 +107,7 @@ function Navbar()
               <img src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" alt="User Icon" className="icon-user" />
               Accedi
               </div>
-            </Link>)}
+            </Link>)} */}
 
 
 

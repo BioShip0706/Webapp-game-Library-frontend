@@ -5,7 +5,7 @@ function Footer() {
     return (
         <footer className="app-footer">
             <div className="footer-content">
-                <p>&copy; {new Date().getFullYear()} Game Library</p>
+                <p>&copy; {new Date().getFullYear()} Game Library - By BioShip</p>
                 <nav className="footer-nav">
 
                 </nav>

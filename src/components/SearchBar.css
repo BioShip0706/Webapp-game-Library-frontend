@@ -1,7 +1,9 @@
 /* Container della barra di ricerca dentro la navbar */
 .search-container {
   width: 455px;        /* puoi regolare la larghezza */
-  position: relative;  /* per poter posizionare i risultati in modo assoluto rispetto a questo */
+  position: absolute;  /* per poter posizionare i risultati in modo assoluto rispetto a questo */
+  left: 50%;
+  transform: translateX(-38%);
 }
 
 /* Input di ricerca */

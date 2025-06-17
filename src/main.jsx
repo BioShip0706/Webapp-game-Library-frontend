@@ -10,6 +10,7 @@ import GameFull from './components/GameFull'
 import FilteredGames from './components/FilteredGames'
 import Register from './components/Register'
 import Login from './components/Login'
+import FavoriteGames from './components/FavoriteGames'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/game/filters",
     element: <FilteredGames></FilteredGames>
+  },
+  {
+    path: "/preferiti",
+    element: <FavoriteGames></FavoriteGames>
   }
 
 ]);
