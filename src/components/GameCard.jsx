@@ -8,38 +8,38 @@ import FavoriteButton from "./FavoriteButton";
 
 function GameCard({gioco})
 {
-    const {favoriteIds, setFavoriteIds, userId} = useContext(FavoriteContext)
+    // const {favoriteIds, setFavoriteIds, userId} = useContext(FavoriteContext)
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     //console.log(favoriteIds);
 
-    function handlePreferito(e)
-    {
-        e.preventDefault(); //blocco la navigazione del Link To 
-        e.stopPropagation(); //impedisco diffusione di effetto 
+    // function handlePreferito(e)
+    // {
+    //     e.preventDefault(); //blocco la navigazione del Link To 
+    //     e.stopPropagation(); //impedisco diffusione di effetto 
 
-        if(!userId)
-        {
-            navigate("/login");
-            return;
-        }
+    //     if(!userId)
+    //     {
+    //         navigate("/login");
+    //         return;
+    //     }
 
         
-        console.log("ciao")
+    //     console.log("ciao")
         
-        if(favoriteIds.includes(gioco.id))
-        {
-            //rimuovo gioco dalla lista e dal db facendo fetch
-            setFavoriteIds(favoriteIds.filter(id => id !== gioco.id))
-            fetch(`http://localhost:8080/favorite/deleteFavoriteGame?userId=${userId}&gameId=${gioco.id}`, {method: 'DELETE'});
-        }
-        else
-        {
-            setFavoriteIds([...favoriteIds,gioco.id]);
-            fetch(`http://localhost:8080/favorite/addNewFavoriteGame?userId=${userId}&gameId=${gioco.id}`, {method: 'POST'});
-        }
-    }
+    //     if(favoriteIds.includes(gioco.id))
+    //     {
+    //         //rimuovo gioco dalla lista e dal db facendo fetch
+    //         setFavoriteIds(favoriteIds.filter(id => id !== gioco.id))
+    //         fetch(`http://localhost:8080/favorite/deleteFavoriteGame?userId=${userId}&gameId=${gioco.id}`, {method: 'DELETE'});
+    //     }
+    //     else
+    //     {
+    //         setFavoriteIds([...favoriteIds,gioco.id]);
+    //         fetch(`http://localhost:8080/favorite/addNewFavoriteGame?userId=${userId}&gameId=${gioco.id}`, {method: 'POST'});
+    //     }
+    // }
     
     return (
         <>

@@ -40,7 +40,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/preferiti",
-    element: <FavoriteGames></FavoriteGames>
+    element: <FavoriteGames filterFavorites={true}></FavoriteGames>
   }
 
 ]);

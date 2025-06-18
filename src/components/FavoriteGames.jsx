@@ -20,7 +20,7 @@ function FavoriteGames()
     useEffect(() => 
     {
         fetch(`http://localhost:8080/game/getAllFavoriteGames?userId=${userId}`).then(response => response.json()).then(data => setGiochi(data))
-    },[giochi])
+    },[userId])
 
     
 
