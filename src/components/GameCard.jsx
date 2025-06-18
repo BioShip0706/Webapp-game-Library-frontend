@@ -43,19 +43,21 @@ function GameCard({gioco})
     
     return (
         <>
-                    
-                    <Link to={`/game/${gioco.id}`} key={gioco.id} className="gioco">
-                        {/* <div className="gioco-cuore" onClick={handlePreferito}>
+                    {/* <div className="gioco-cuore" onClick={handlePreferito}>
                             {favoriteIds.includes(gioco.id) ? "💖" : "🤍"} 
                         </div> */}
-                        <FavoriteButton giocoId = {gioco.id} stile = "gameCardHeart"></FavoriteButton>
+                    <Link to={`/game/${gioco.id}`} key={gioco.id} className="gioco">
+                        <FavoriteButton giocoId={gioco.id} stile="gameCardHeart" className="gioco-cuore" />
 
-                        <img src={gioco.imageURL} alt={gioco.title} />
-                        <h2>{gioco.title}</h2>
+                        <img src={gioco.imageURL} alt={gioco.title} className="gioco-immagine" />
+                        <h2 className="gioco-titolo">{gioco.title}</h2>
 
                         <div className="gioco-info">
-                            <span>{gioco.developer}</span>
-                            <span className="voto">{gioco.score}  ⭐</span>
+                            <div className="gioco-dev-date">
+                            <span className="gioco-developer">{gioco.developer}</span>
+                            <span className="gioco-data">{new Date(gioco.releaseDate).getFullYear()}</span>
+                            </div>
+                            <span className="gioco-voto">{gioco.score} ⭐</span>
                         </div>
                     </Link>
 

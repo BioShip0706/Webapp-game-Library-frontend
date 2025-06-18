@@ -64,8 +64,8 @@ function SearchBar()
                         <Link key={game.id} to={`/game/${game.id}`} className="result-item">
                             <div className="result-left">{game.title}</div>
                             <div className="result-right">
-                            <span>{game.developer}</span>
-                            <span>{new Date(game.releaseDate).getFullYear()}</span>
+                                <span>{game.developer}</span>
+                                <span>{new Date(game.releaseDate).getFullYear()}</span>
                             </div>
                         </Link>
                     ))}
