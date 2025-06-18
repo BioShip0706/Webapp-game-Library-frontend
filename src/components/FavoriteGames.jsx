@@ -10,7 +10,7 @@ import SearchBar from "./SearchBar";
 import { FavoriteContext } from "../store/FavoriteContext";
 import { useContext } from "react";
 
-function FavoriteGames()
+function FavoriteGames({filterFavorites})
 {
     const [giochi,setGiochi] = useState([])
     
@@ -34,7 +34,7 @@ function FavoriteGames()
 
             <div className="allgames-wrapper">
                 
-                <GameFilters />
+                <GameFilters  filterFavorites = {filterFavorites}/>
                 
                 <div className="games-container">
                     {giochi.map(gioco => (

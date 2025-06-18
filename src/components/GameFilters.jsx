@@ -2,16 +2,18 @@ import { useEffect } from "react";
 import { useState } from "react";
 import {  useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { FavoriteContext } from "../store/FavoriteContext";
+import { useContext } from "react";
 import "./GameFilters.css"
 
 
 
 
 
-function GameFilters()
+function GameFilters({filterFavorites})
 {
 
+    const {favoriteIds} = useContext(FavoriteContext)
 
     const [generi, setGeneri] = useState([])
     // const [generiSelezionati, setGeneriSelezionati] = useState([]);
@@ -21,10 +23,13 @@ function GameFilters()
 
     //provo a riprendere i filtri se ci sono
     const location = useLocation();
-    const { generiSelezionati: inizialiGeneri = [], piattaformeSelezionate: inizialiPiattaforme = [] } = location.state || {}; //dallo state prendo generiSelezionati e lo metto dentro una variabile array vuoto [], e poi prendo dallo state
+    const { generiSelezionati: inizialiGeneri = [], piattaformeSelezionate: inizialiPiattaforme = [], scoreOrder: scoreIniziale = "", releaseDateOrder: releaseIniziale = "" } = location.state || {}; //dallo state prendo generiSelezionati e lo metto dentro una variabile array vuoto [], e poi prendo dallo state
 
     const [generiSelezionati, setGeneriSelezionati] = useState(inizialiGeneri);
     const [piattaformeSelezionate, setPiattaformeSelezionate] = useState(inizialiPiattaforme);
+
+    const [scoreOrder, setScoreOrder] = useState(scoreIniziale);
+    const [releaseDateOrder,setReleaseDateOrder] = useState(releaseIniziale);
 
     const navigate = useNavigate();
 
@@ -52,6 +57,25 @@ function GameFilters()
 
     }
 
+
+    function handleSelezioneValutazione(e)
+    {
+        const selectScoreOrder = e.target.value; //prendo per esempio "SWITHC" però il value in questo caso è l'id della piattaforma,
+
+        console.log(selectScoreOrder)
+        setScoreOrder(selectScoreOrder);
+
+    }
+
+    function handleSelezioneDataRilascio(e)
+    {
+        const selectedReleaseOrder = e.target.value; //prendo per esempio "SWITHC" però il value in questo caso è l'id della piattaforma,
+
+        console.log(selectedReleaseOrder)
+        setReleaseDateOrder(selectedReleaseOrder);
+
+    }
+
     useEffect(() => 
     {
         fetch("http://localhost:8080/genre/getAllGenres").then(response => response.json()).then(data => setGeneri(data))
@@ -65,7 +89,15 @@ function GameFilters()
 
     function handleFiltroGiochi()
     {
-        const queryString = `?genreIds=${generiSelezionati.join(",")}&platformIds=${piattaformeSelezionate.join(",")}`;
+        let queryString = `?genreIds=${generiSelezionati.join(",")}&platformIds=${piattaformeSelezionate.join(",")}&scoreOrder=${scoreOrder}&releaseDateOrder=${releaseDateOrder}`;
+        console.log("Filter favorite è " + filterFavorites)
+
+        if(filterFavorites)
+        {
+            queryString += `&favoriteIds=${favoriteIds}`;
+        }
+
+        console.log("QueryString è " + queryString)
 
         navigate(
             {
@@ -73,7 +105,7 @@ function GameFilters()
                 search: queryString,
             },
             {
-                state: {generiSelezionati: generiSelezionati, piattaformeSelezionate: piattaformeSelezionate},
+                state: {generiSelezionati: generiSelezionati, piattaformeSelezionate: piattaformeSelezionate, scoreOrder: scoreOrder, releaseDateOrder: releaseDateOrder, filterFavorites: filterFavorites},
             }
         );
 
@@ -83,6 +115,15 @@ function GameFilters()
     {
         setGeneriSelezionati([]);
         setPiattaformeSelezionate([]);
+        setScoreOrder("");
+        setReleaseDateOrder("");
+
+        if(filterFavorites)
+        {
+            navigate("/preferiti")
+            return;
+        }
+        
         navigate("/");
     }
 
@@ -90,6 +131,7 @@ function GameFilters()
     return(
         <>
             <div  className="filters-wrapper">
+
                 <label>Generi:</label>
                 <select onChange={handleSelezioneGenere} defaultValue="" disabled={generiSelezionati.length >= 3}>
 
@@ -103,7 +145,6 @@ function GameFilters()
 
                 </select>
                 
-    
                 {/*<p>Generi selezionati: </p>*/}
                 <ul>
                     {generiSelezionati.map(id => {
@@ -137,6 +178,27 @@ function GameFilters()
                     })}
                 </ul>
 
+
+                <label>Valutazione:</label>
+                <select onChange={handleSelezioneValutazione} defaultValue="" value={scoreOrder}>
+
+                    <option value="">-- Nessun ordine --</option>
+                    <option value="asc">-- Ordine Ascendente --</option>
+                    <option value="desc">-- Ordine Descrescente --</option>
+                    
+
+                </select>
+
+                <label>Data di rilascio:</label>
+                <select onChange={handleSelezioneDataRilascio} defaultValue="" value={releaseDateOrder}>
+
+                    <option value="">-- Nessun ordine --</option>
+                    <option value="asc">-- Ordine Ascendente --</option>
+                    <option value="desc">-- Ordine Descrescente --</option>
+                    
+
+                </select>
+
                 {/* <Link to="/game/filters" state={{generiSelezionati: generiSelezionati, piattaformeSelezionate: piattaformeSelezionate}}>
                     <button disabled={generiSelezionati >= 3 || piattaformeSelezionate >= 3}>Filtra Giochi</button>
                 </Link> */}
@@ -145,9 +207,9 @@ function GameFilters()
                     <button className="filter-button"  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Filtra Giochi</button>
                 </Link> */}
 
-                {(generiSelezionati.length >= 1 || piattaformeSelezionate.length >= 1) && <button className="clean-button" onClick={handleCleanFiltri}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Pulisci Filtri</button>}
+                <button className="clean-button" onClick={handleCleanFiltri}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1 && scoreOrder == "" && releaseDateOrder == ""}>Pulisci Filtri</button>
                
-                <button className="filter-button" onClick={handleFiltroGiochi}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Filtra Giochi</button>
+                <button className="filter-button" onClick={handleFiltroGiochi}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1 && scoreOrder == "" && releaseDateOrder == ""}>Filtra Giochi</button>
                 
 
             </div>

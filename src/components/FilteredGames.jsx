@@ -6,16 +6,23 @@ import GameFilters from "./GameFilters";
 import "./AllGames.css"
 import Footer from "./Footer";
 
+
 function FilteredGames() 
 {
     const [giochi, setGiochi] = useState([]);
     const location = useLocation();
+    const { filterFavorites } = location.state || false;
 
     useEffect(() => 
     {
         const params = new URLSearchParams(location.search);
         const genreIds = params.get("genreIds"); //prende gli id, tipo 12,5,6
         const platformIds = params.get("platformIds");
+        const scoreOrder = params.get("scoreOrder");
+        const releaseDateOrder = params.get("releaseDateOrder");
+        const favoriteIds = params.get("favoriteIds") || null;
+
+
 
         //se arrivo dal filtro
         //const {generiSelezionati, piattaformeSelezionate} = location.state || {}; //se ci sono altrimenti inizializzali vuoti
@@ -32,6 +39,21 @@ function FilteredGames()
         if(platformIds)
         {
             queryParams.push(`platformIds=${platformIds}`);
+        }
+
+        if(scoreOrder)
+        {
+            queryParams.push(`scoreOrder=${scoreOrder}`);
+        }
+
+        if(releaseDateOrder)
+        {
+            queryParams.push(`releaseDateOrder=${releaseDateOrder}`);
+        }
+
+        if(favoriteIds)
+        {
+            queryParams.push(`favoriteIds=${favoriteIds}`);
         }
 
         //con stato
@@ -59,7 +81,7 @@ function FilteredGames()
             <div className="allgames-wrapper">
 
 
-                    <GameFilters />
+                    <GameFilters filterFavorites={filterFavorites} />
 
                     <div className="games-container">
                         {giochi.map(gioco => (
