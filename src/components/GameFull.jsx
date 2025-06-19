@@ -63,14 +63,14 @@ function GameFull()
 
               <div className="game-info">
                 <h2>{game.title}</h2>
-                <p><strong>Descrizione:</strong> {game.description}</p>
-                <p><strong>Sviluppatore:</strong> {game.developer}</p>
-                <p><strong>Pubblicato da:</strong> {game.publisher}</p>
-                <p><strong>Data di uscita:</strong> {game.releaseDate}</p>
-                <p><strong>Voto:</strong> {game.score}/10</p>
+                <p><strong>Description:</strong> {game.description}</p>
+                <p><strong>Developer:</strong> {game.developer}</p>
+                <p><strong>Publisher:</strong> {game.publisher}</p>
+                <p><strong>Release Date:</strong> {game.releaseDate}</p>
+                <p><strong>Score:</strong> {game.score}/10</p>
 
-                <p><strong>Piattaforme:</strong> {game.platforms?.map(p => p.name).join(", ")}</p>
-                <p><strong>Generi:</strong> {game.genres?.map(g => g.name).join(", ")}</p>
+                <p><strong>Platforms:</strong> {game.platforms?.map(p => p.name).join(", ")}</p>
+                <p><strong>Genres:</strong> {game.genres?.map(g => g.name).join(", ")}</p>
                 
                 {console.log(gameId)}
                 {console.log("IL GIOCO ID è: " + gameId)}

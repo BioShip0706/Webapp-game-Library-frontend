@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
 
-  height: 290px;
+  height: 320px;
   max-width: 300px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0;
@@ -51,7 +51,6 @@
   max-width: 90%;
 }
 
-/* Container info gioco */
 .gioco-info {
   width: 80%;
   display: flex;
@@ -61,27 +60,38 @@
   color: #ccc;
   font-weight: 500;
   margin-top: 2px;
- 
+
+  flex-wrap: nowrap; /* NON permettere il wrap */
+  align-items: center; /* centra verticalmente */
 }
 
-/* Info sviluppatore e data */
 .gioco-dev-date {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 5px;
+
+  max-width: 75%;       /* limita larghezza per non sovrapporsi */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .gioco-developer,
 .gioco-data {
   font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
 }
 
-/* Punteggio */
 .gioco-voto {
   font-weight: 600;
   font-size: 1rem;
   color: #ddd;
+  flex-shrink: 0; /* impedisce al voto di ridursi o andare a capo */
 }
 
 /* Cuore preferito */
