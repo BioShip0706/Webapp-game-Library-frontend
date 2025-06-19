@@ -22,7 +22,7 @@ function AllGames()
     const [currentPage, setCurrentPage] = useState(pageFromUrl);
     const [totalCount, setTotalCount] = useState(0);
     const gamesPerPage = 20;
-    const totalPages = Math.ceil(totalCount / gamesPerPage)
+    const totalPages = Math.ceil(totalCount / gamesPerPage) //arrotondo
 
 
     
