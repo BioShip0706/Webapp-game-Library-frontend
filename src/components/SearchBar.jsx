@@ -54,7 +54,7 @@ function SearchBar()
 
             <div className="search-container" onSubmit={submitRedirectClean}>
                 <form>
-                <input type="search" placeholder="Cerca giochi..." onChange={typeLetter} value = {letters}/>
+                <input type="search" placeholder="Search for a game..." onChange={typeLetter} value = {letters}/>
                 </form>
             </div>
 

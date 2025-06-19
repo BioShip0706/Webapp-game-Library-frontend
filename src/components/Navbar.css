@@ -3,7 +3,7 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 80px;
-  background-color: #252525;
+  background-color: #333;
   display: flex;
   align-items: center;
   justify-content: space-between;

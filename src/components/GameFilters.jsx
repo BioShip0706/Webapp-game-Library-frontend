@@ -120,7 +120,7 @@ function GameFilters({filterFavorites})
 
         if(filterFavorites)
         {
-            navigate("/preferiti")
+            navigate("/favorites")
             return;
         }
         
@@ -132,10 +132,10 @@ function GameFilters({filterFavorites})
         <>
             <div  className="filters-wrapper">
 
-                <label>Generi:</label>
+                <label>Genres:</label>
                 <select onChange={handleSelezioneGenere} defaultValue="" disabled={generiSelezionati.length >= 3}>
 
-                    <option value="">-- Seleziona un genere --</option>
+                    <option value="">-- Select a genre --</option>
 
                     {generi.map(genere => (
                         <option key={genere.id} value={genere.id}>
@@ -157,10 +157,10 @@ function GameFilters({filterFavorites})
 
 
             
-                <label>Piattaforme:</label>
+                <label>Platforms:</label>
                 <select onChange={handleSelezionePiattaforma} defaultValue="" disabled={piattaformeSelezionate.length >= 3}>
 
-                    <option value="">-- Seleziona una piattaforma --</option>
+                    <option value="">-- Select a platform --</option>
 
                     {piattaforme.map(piattaforma => (
                         <option key={piattaforma.id} value={piattaforma.id}>
@@ -179,22 +179,22 @@ function GameFilters({filterFavorites})
                 </ul>
 
 
-                <label>Valutazione:</label>
+                <label>Score:</label>
                 <select onChange={handleSelezioneValutazione} defaultValue="" value={scoreOrder}>
 
-                    <option value="">-- Nessun ordine --</option>
-                    <option value="asc">-- Ordine Ascendente --</option>
-                    <option value="desc">-- Ordine Descrescente --</option>
+                    <option value="">-- No order --</option>
+                    <option value="asc">-- Ascending order --</option>
+                    <option value="desc">-- Descending order --</option>
                     
 
                 </select>
 
-                <label>Data di rilascio:</label>
+                <label>Release Year:</label>
                 <select onChange={handleSelezioneDataRilascio} defaultValue="" value={releaseDateOrder}>
 
-                    <option value="">-- Nessun ordine --</option>
-                    <option value="asc">-- Ordine Ascendente --</option>
-                    <option value="desc">-- Ordine Descrescente --</option>
+                    <option value="">-- No order --</option>
+                    <option value="asc">-- Ascending order --</option>
+                    <option value="desc">-- Descending order --</option>
                     
 
                 </select>
@@ -207,9 +207,9 @@ function GameFilters({filterFavorites})
                     <button className="filter-button"  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1}>Filtra Giochi</button>
                 </Link> */}
 
-                <button className="clean-button" onClick={handleCleanFiltri}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1 && scoreOrder == "" && releaseDateOrder == ""}>Pulisci Filtri</button>
+                <button className="clean-button" onClick={handleCleanFiltri}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1 && scoreOrder == "" && releaseDateOrder == ""}>Reset filters</button>
                
-                <button className="filter-button" onClick={handleFiltroGiochi}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1 && scoreOrder == "" && releaseDateOrder == ""}>Filtra Giochi</button>
+                <button className="filter-button" onClick={handleFiltroGiochi}  disabled={generiSelezionati.length < 1 && piattaformeSelezionate.length < 1 && scoreOrder == "" && releaseDateOrder == ""}>FILTER GAMES</button>
                 
 
             </div>

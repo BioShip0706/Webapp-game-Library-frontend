@@ -2,10 +2,32 @@
 
 /* Impostazioni globali */
 body {
-  background-color: #363333;   /* sfondo scuro */
+  background-color: #292727;   /* sfondo scuro */
   color: #e0e0e0;              /* testo chiaro */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   min-height: 100vh;
 }
+
+body::before {
+  content: "";
+  background-image: url('https://img.freepik.com/free-vector/eye-catching-electronic-remote-controller-background-with-text-space_1017-54739.jpg?t=st=1750329440~exp=1750333040~hmac=1220d654bf7b315ee4d8434c5914d3d195a76eec725bd977866c86f0fa737f61&w=1380');
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Metti dietro tutto */
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
 

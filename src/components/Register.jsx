@@ -4,6 +4,7 @@ import './Register.css';
 
 import { useContext } from 'react';
 import { FavoriteContext } from '../store/FavoriteContext';
+import Navbar from './Navbar';
 
 function Register() 
 {
@@ -81,13 +82,15 @@ function Register()
     };
 
     return (
+        <>
+        <Navbar></Navbar>
         <div className="register-container">
             <div className="register-box">
-                <h2>Crea il tuo Account</h2>
+                <h2>Create your Account</h2>
 
                 <form onSubmit={handleRegister}>
                     <div className="input-group">
-                        <label htmlFor="firstName">Nome</label>
+                        <label htmlFor="firstName">Name</label>
                         <input
                             type="text"
                             id="firstName"
@@ -98,7 +101,7 @@ function Register()
                     </div>
 
                     <div className="input-group">
-                        <label htmlFor="lastName">Cognome</label>
+                        <label htmlFor="lastName">Surname</label>
                         <input
                             type="text"
                             id="lastName"
@@ -110,7 +113,7 @@ function Register()
 
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
-                        <input
+                        <input placeholder="GameLibrary@yourdomain.com"
                             type="email"
                             id="email"
                             value={email}
@@ -147,15 +150,16 @@ function Register()
 
                     {errorMessage && (<p className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{errorMessage}</p>)}
 
-                    <button type="submit" className="register-button">Registrati</button>
+                    <button type="submit" className="register-button">Register</button>
 
                 </form>
 
                 <p className="login-prompt">
-                    Hai già un account? <Link to="/login" className="login-link">Log In</Link>
+                    Already have an account? <Link to="/login" className="login-link">Log In</Link>
                 </p>
             </div>
         </div>
+        </>
     );
 }
 

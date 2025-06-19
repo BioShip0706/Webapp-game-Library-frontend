@@ -12,7 +12,9 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-height: 800px;
+  /*max-height: 780px;*/
+  min-width: 250px;
+  align-self: flex-start;
 }
 
 .filters-wrapper label {

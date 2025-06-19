@@ -79,7 +79,7 @@ function Navbar()
                       {username}
 
                       <div className="dropdown-content">
-                        <Link to="/preferiti">Preferiti</Link>
+                        <Link to="/favorites">Favorites</Link>
                         <div onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</div>
                       </div>
                     </div>
@@ -93,7 +93,7 @@ function Navbar()
                         alt="User Icon"
                         className="icon-user"
                       />
-                      Accedi
+                      Login
                     </div>
                   </Link>
                 )}

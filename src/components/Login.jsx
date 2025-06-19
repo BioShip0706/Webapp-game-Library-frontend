@@ -4,6 +4,7 @@ import "./Register.css"
 
 import { useContext } from 'react';
 import { FavoriteContext } from '../store/FavoriteContext';
+import Navbar from './Navbar';
 
 function Login() 
 {
@@ -62,9 +63,11 @@ function Login()
     };
 
     return (
+        <>
+        <Navbar></Navbar>
         <div className="register-container">
             <div className="register-box">
-                <h2>Accedi</h2>
+                <h2>Login</h2>
                 <form onSubmit={handleRegister}>
                     <div className="input-group">
                         <label htmlFor="username">Username</label>
@@ -93,16 +96,17 @@ function Login()
 
                     {errorMessage && (<p className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{errorMessage}</p>)}
 
-                    <button type="submit" className="register-button">Accedi</button>
+                    <button type="submit" className="register-button">Login</button>
 
                 </form>
 
                 <p className="login-prompt">
-                    Sei un nuovo Utente? <Link to="/register" className="login-link">Registrati</Link>
+                    Don't have an account? <Link to="/register" className="login-link">Register here</Link>
                 </p>
 
             </div>
         </div>
+        </>
     );
 }
 
