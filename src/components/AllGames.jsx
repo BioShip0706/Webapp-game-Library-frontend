@@ -21,7 +21,7 @@ function AllGames()
 
     const [currentPage, setCurrentPage] = useState(pageFromUrl);
     const [totalCount, setTotalCount] = useState(0);
-    const gamesPerPage = 10;
+    const gamesPerPage = 20;
     const totalPages = Math.ceil(totalCount / gamesPerPage)
 
 
@@ -42,6 +42,7 @@ function AllGames()
       .catch(err => console.error("Errore nel fetch dei giochi:", err));
 
       navigate({pathname: "/", search: `page=${currentPage}`})
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [currentPage,navigate]);
 
     

@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import "./Pagination.css"
+
 function Pagination({currentPage, totalPages, onPageChange})
 {
 
@@ -14,21 +16,21 @@ function Pagination({currentPage, totalPages, onPageChange})
     return (
         <>
 
-            <div>
+            <div className="pagination-container">
 
-                <button onClick={() => onPageChange(1)} disabled={currentPage === 1} style={{margin: "0 5px"}}>
+                <button onClick={() => onPageChange(1)} disabled={currentPage === 1}>
                 {"<<"} {/*Per andare all'inizio (pagina 1) */}
                 </button>
             
 
             
                 {pages.map(page => (
-                    <button key={page} onClick={() => onPageChange(page)} style={{margin: "0 5px",fontWeight: page === currentPage ? "bold" : "normal", color: page === currentPage ? "red" : "black"}}>
+                    <button key={page} onClick={() => onPageChange(page)} className={page === currentPage ? "active" : ""}>
                     {page}
                     </button>
                 ))}
 
-                <button onClick={() => onPageChange(totalPages)} disabled={currentPage === totalPages} style={{margin: "0 5px"}}>
+                <button onClick={() => onPageChange(totalPages)} disabled={currentPage === totalPages}>
                 {">>"} {/*Per andare all ultima pagina (pagina totalPages) */}
                 </button>
 
