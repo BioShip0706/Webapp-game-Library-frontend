@@ -52,35 +52,41 @@ function GameFull()
     return (
       <>
         <Navbar />
-        <div className="game-full">
-        {error && (<p className="no-games-message">{error}</p>)} 
-
-        {!error && !game && (<p>Caricamento in corso...</p>)}
+        <div className="gameFullContainer">
+        {error && <p className="no-games-message">{error}</p>}
+        {!error && !game && <p>Caricamento in corso...</p>}
 
         {game && (
-            <div className="game-details">
-              <img src={game.imageURL} alt={game.title} className="game-image" />
+          <div className="gameFullContent">
+            <img
+              src={game.imageURL}
+              alt={game.title}
+              className="gameFullImage"
+            />
 
-              <div className="game-info">
-                <h2>{game.title}</h2>
-                <p><strong>Description:</strong> {game.description}</p>
+            <div className="gameFullInfo">
+              <div className="gameFullHeader">
+                <h1>{game.title}</h1>
+                <FavoriteButton giocoId={game.id} stile="gameFullHeart" />
+              </div>
+
+              
+
+              <div className="gameFullDetails">
                 <p><strong>Developer:</strong> {game.developer}</p>
                 <p><strong>Publisher:</strong> {game.publisher}</p>
                 <p><strong>Release Date:</strong> {game.releaseDate}</p>
                 <p><strong>Score:</strong> {game.score}/10</p>
-
                 <p><strong>Platforms:</strong> {game.platforms?.map(p => p.name).join(", ")}</p>
                 <p><strong>Genres:</strong> {game.genres?.map(g => g.name).join(", ")}</p>
-                
-                {console.log(gameId)}
-                {console.log("IL GIOCO ID è: " + gameId)}
-                <FavoriteButton giocoId = {game.id} stile = "gameFullHeart"></FavoriteButton>
-
               </div>
-            </div>
-        )}
 
-        </div>
+              <p className="gameFullDescription">{game.description}</p>
+
+            </div>
+          </div>
+        )}
+      </div>
 
         <Footer></Footer>
       </>

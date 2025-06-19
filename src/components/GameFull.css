@@ -1,66 +1,90 @@
-.game-full {
-  padding: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
+.gameFullContainer {
+  max-width: 1400px; /* aumentato per più spazio */
+  margin: 40px auto;
+  padding: 0 20px;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.game-details {
+.gameFullContent {
   display: flex;
-  gap: 30px;
-  align-items: flex-start;
-  background-color: #4e4c4c;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+  flex-wrap: nowrap;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  overflow: visible; /* lascia espandere contenuti */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
-.game-image {
-  width: 300px;
-  height: auto;
-  border-radius: 8px;
+.gameFullImage {
+  width: 100%;
+  max-width: 450px;
   object-fit: cover;
+  height: auto;
+  display: block;
 }
 
-.game-info {
-  flex: 1;
+.gameFullInfo {
+  position: relative; /* contenitore per il cuore assoluto */
+  flex: none;
+  width: 800px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #282828;
+  min-width: auto;
+  max-width: 800px;
 }
 
-.game-info h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 28px;
+.gameFullHeader {
+  display: block; /* solo contenitore titolo */
+  margin-bottom: 40px; /* spazio sotto per cuore */
 }
 
-.game-info p {
-  margin: 6px 0;
-  font-size: 16px;
-  line-height: 1.5;
+.gameFullHeader h1 {
+  font-size: 36px;
+  margin: 0;
+  white-space: normal; /* titolo può andare a capo */
+  overflow: visible;
+  text-overflow: clip;
+  padding-right: 60px; /* spazio a destra per cuore */
+  line-height: 1.1;
 }
-
-.error-msg {
-  color: red;
-  text-align: center;
-  font-weight: bold;
-}
-
-.loading-msg {
-  text-align: center;
-  font-style: italic;
-}
-
-
 
 .gameFullHeart {
-  position: absolute;
-  top: 10px;      /* distanza dal bordo superiore */
-  right: 10px;    /* distanza dal bordo destro */
-  background-color: transparent; /* o un colore di sfondo se vuoi */
-  border: none;
+  position: absolute; /* posizione fissa in alto a destra */
+  top: 30px;          /* allineato con padding .gameFullInfo */
+  right: 30px;
+  font-size: 32px;   /* cuore più grande */
+  color: crimson;
   cursor: pointer;
-  font-size: 40px; /* adatta la dimensione del cuore o icona */
-  color: red;      /* colore cuore o icona */
-  transition: transform 0.2s ease;
+  line-height: 1;
+  width: auto;
+  height: auto;
+  flex-shrink: 0;
+  margin-left: 0;
+  display: inline-block;
 }
 
+.gameFullDescription {
+  font-size: 17px;
+  line-height: 1.6;
+  background-color: #333;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+
+.gameFullDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  background-color: #2d2d2d;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+
+.gameFullDetails p {
+  margin: 0;
+  font-size: 15px;
+  color: #ccc;
+}
