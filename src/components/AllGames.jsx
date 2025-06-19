@@ -41,6 +41,7 @@ function AllGames()
       .then(data => {setGiochi(data.content); setTotalCount(data.totalElements)}) //dall'object ritornato da Page, letto dlala console, content è il json con i giochi, totalElements è 30 (esempio)
       .catch(err => console.error("Errore nel fetch dei giochi:", err));
 
+      console.log("chiamo tutti i giochi")
       navigate({pathname: "/", search: `page=${currentPage}`})
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [currentPage,navigate]);
@@ -58,14 +59,20 @@ function AllGames()
             <div className="allgames-wrapper">
                 
                 <GameFilters />
+            
                 
                 <div className="games-container">
-                    {giochi.map(gioco => (
+
+                {giochi.length === 0 ? (<div className="no-games-message">No games found!</div>) :
+                (giochi.map(gioco => (
                         //<Link to={`/game/${gioco.id}`} key={gioco.id} state={{gioco}}>
                             <GameCard key={gioco.id} gioco={gioco} />
                         //</Link>
-                    ))}
+                )))}
+
+
                 </div>
+
             </div>
             
             <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage}></Pagination>

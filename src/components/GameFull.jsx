@@ -53,7 +53,7 @@ function GameFull()
       <>
         <Navbar />
         <div className="game-full">
-        {error && (<p>{error}</p>)} 
+        {error && (<p className="no-games-message">{error}</p>)} 
 
         {!error && !game && (<p>Caricamento in corso...</p>)}
 

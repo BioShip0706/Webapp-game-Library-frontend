@@ -27,8 +27,9 @@ function Navbar()
     setDropdownOpen(prev => !prev);
   };
 
-  function handleLogout()
+  function handleLogout(e)
   {
+    e.stopPropagation();
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     localStorage.removeItem("id");
@@ -36,6 +37,7 @@ function Navbar()
     setDropdownOpen(false);
     setUserId(null)
     navigate("/");
+    console.log("sloggo")
   }
 
 

@@ -4,7 +4,10 @@ import "./Pagination.css"
 
 function Pagination({currentPage, totalPages, onPageChange})
 {
-
+    if(totalPages === 0)
+    {
+        return null;
+    }
 
     const pages = [];
 

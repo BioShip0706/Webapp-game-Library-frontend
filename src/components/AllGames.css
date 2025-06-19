@@ -14,3 +14,9 @@
 }
 
 
+.no-games-message {
+    font-size:3rem;
+    text-align: center;
+    color: #e09c9c;
+    margin-top: 2rem;
+}
