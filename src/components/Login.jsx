@@ -5,6 +5,7 @@ import "./Register.css"
 import { useContext } from 'react';
 import { FavoriteContext } from '../store/FavoriteContext';
 import Navbar from './Navbar';
+import { AuthContext } from '../store/AuthContext';
 
 function Login() 
 {
@@ -24,6 +25,8 @@ function Login()
     };
 
     const {setUserId} = useContext(FavoriteContext)
+
+    const {setJwtToken} = useContext(AuthContext)
 
     async function handleRegister(e)
     {
@@ -48,6 +51,8 @@ function Login()
                 localStorage.setItem("id",loginData.id)
                 setUserId(loginData.id)
                 
+                setJwtToken(loginData.token);
+
                 navigate('/'); // Riporto alla home
             } 
             else //altrimento ricevo solo una stringa

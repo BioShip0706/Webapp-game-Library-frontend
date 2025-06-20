@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FavoriteContext } from "../store/FavoriteContext";
 import FavoriteButton from "./FavoriteButton";
+import EditGameButton from "./EditGameButton";
+import DeleteGameButton from "./DeleteGameButton";
 
 
 function GameCard({gioco})
@@ -48,6 +50,10 @@ function GameCard({gioco})
                         </div> */}
                     <Link to={`/game/${gioco.id}`} key={gioco.id} className="gioco">
                         <FavoriteButton giocoId={gioco.id} stile="gameCardHeart" className="gioco-cuore" />
+                        <EditGameButton className="gioco-edit"></EditGameButton>
+                        <DeleteGameButton className="gioco-delete"></DeleteGameButton>
+                        {/*<button className="gioco-edit">EDIT 🖋️</button>*/}
+                        {/*<button className="gioco-delete">DELETE ❌</button>*/}
 
                         <img src={gioco.imageURL} alt={gioco.title} className="gioco-immagine" />
                         <h2 className="gioco-titolo">{gioco.title}</h2>

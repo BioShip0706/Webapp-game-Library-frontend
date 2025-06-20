@@ -113,3 +113,43 @@
 .gioco:hover .gioco-cuore {
   display: block;
 }
+
+.gameCardHeart:hover
+{
+  background-color: rgb(172, 64, 64);
+}
+
+/*Test bottone edit e delete */
+
+.gioco-edit{
+  position: absolute;
+  top: 70px;
+  right: 8px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  user-select: none;
+  line-height: 1.2;
+  display: none;
+  color:white;
+}
+
+.gioco-delete{
+  position: absolute;
+  top: 130px;
+  right: 8px;
+  background-color: rgba(0,0,0,0.5);
+  color:white;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  user-select: none;
+  line-height: 1.2;
+  display: none;
+}
+
+.gioco:hover .gioco-edit,
+.gioco:hover .gioco-delete {
+  display: block;
+}

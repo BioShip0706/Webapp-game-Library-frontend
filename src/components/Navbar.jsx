@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
 import { FavoriteContext } from "../store/FavoriteContext";
+import { AuthContext } from '../store/AuthContext';
 
 function Navbar() 
 {
@@ -16,6 +17,8 @@ function Navbar()
   const location = useLocation();
 
   const {setUserId} = useContext(FavoriteContext)
+
+  const {setJwtToken} = useContext(AuthContext)
 
 
   useEffect(() => {
@@ -36,6 +39,7 @@ function Navbar()
     setUsername(null)
     setDropdownOpen(false);
     setUserId(null)
+    setJwtToken(null)
     navigate("/");
     console.log("sloggo")
   }
