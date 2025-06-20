@@ -107,6 +107,7 @@
   user-select: none;
   line-height: 1.2;
   display: none;
+
 }
 
 .gioco:hover .gameCardHeart,
@@ -116,7 +117,7 @@
 
 .gameCardHeart:hover
 {
-  background-color: rgb(172, 64, 64);
+  background-color: rgba(7, 7, 7, 0.705);
 }
 
 /*Test bottone edit e delete */
@@ -125,7 +126,7 @@
   position: absolute;
   top: 70px;
   right: 8px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
   padding: 4px 8px;
   border-radius: 10px;
   font-size: 1.5rem;
@@ -133,13 +134,19 @@
   line-height: 1.2;
   display: none;
   color:white;
+  text-decoration: none;
+}
+
+.gioco-edit:hover
+{
+  background-color: rgba(21, 83, 155, 0.705);
 }
 
 .gioco-delete{
   position: absolute;
   top: 130px;
   right: 8px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
   color:white;
   padding: 4px 8px;
   border-radius: 10px;
@@ -147,6 +154,12 @@
   user-select: none;
   line-height: 1.2;
   display: none;
+  text-decoration: none;
+}
+
+.gioco-delete:hover
+{
+  background-color: rgba(148, 14, 14, 0.705);
 }
 
 .gioco:hover .gioco-edit,

@@ -1,5 +1,5 @@
 .gameFullContainer {
-  max-width: 1400px; /* aumentato per più spazio */
+  max-width: 1400px;
   margin: 40px auto;
   padding: 0 20px;
   color: #fff;
@@ -8,11 +8,11 @@
 
 .gameFullContent {
   display: flex;
-  flex-wrap: nowrap;
   background-color: #1f1f1f;
   border-radius: 12px;
-  overflow: visible; /* lascia espandere contenuti */
+  overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  gap: 30px;
 }
 
 .gameFullImage {
@@ -21,58 +21,74 @@
   object-fit: cover;
   height: auto;
   display: block;
+  border-radius: 12px 0 0 12px;
 }
 
 .gameFullInfo {
-  position: relative; /* contenitore per il cuore assoluto */
-  flex: none;
-  width: 800px;
+  flex: 1;
   padding: 30px;
+  background-color: #282828;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #282828;
-  min-width: auto;
-  max-width: 800px;
 }
 
 .gameFullHeader {
-  display: block; /* solo contenitore titolo */
-  margin-bottom: 40px; /* spazio sotto per cuore */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
 
-.gameFullHeader h1 {
-  font-size: 36px;
+.gameTitle {
+  flex: 1;
+  font-size: 20px;
   margin: 0;
-  white-space: normal; /* titolo può andare a capo */
-  overflow: visible;
-  text-overflow: clip;
-  padding-right: 60px; /* spazio a destra per cuore */
   line-height: 1.1;
+  color: #fff;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
-.gameFullHeart {
-  position: absolute; /* posizione fissa in alto a destra */
-  top: 30px;          /* allineato con padding .gameFullInfo */
-  right: 30px;
-  font-size: 32px;   /* cuore più grande */
-  color: crimson;
+.gameFullButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.gameFullButtons button,
+.gameFullButtons .gameFullHeart,
+.gameFullButtons .gameFullEdit,
+.gameFullButtons .gameFullDelete {
+  font-size: 36px;
+  color: white;
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
   line-height: 1;
   width: auto;
   height: auto;
-  flex-shrink: 0;
-  margin-left: 0;
-  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.171);
+  padding: 7px 8px;
+  border-radius: 15px;
+  text-decoration: none;
 }
 
-.gameFullDescription {
-  font-size: 17px;
-  line-height: 1.6;
-  background-color: #333;
-  padding: 15px 20px;
-  border-radius: 8px;
+.gameFullButtons button:hover,
+.gameFullButtons .gameFullHeart:hover,
+.gameFullButtons .gameFullEdit:hover,
+.gameFullButtons .gameFullDelete:hover {
+  color: red; /* opzionale, per evidenziare ancora di più */
+  background-color: rgba(0, 0, 0, 0.267);
 }
+
 
 .gameFullDetails {
   display: grid;
@@ -87,4 +103,13 @@
   margin: 0;
   font-size: 15px;
   color: #ccc;
+}
+
+.gameFullDescription {
+  font-size: 17px;
+  line-height: 1.6;
+  background-color: #333;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: #eee;
 }

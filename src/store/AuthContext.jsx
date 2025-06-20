@@ -43,7 +43,7 @@ function AuthContextProvider({children})
 
     return(
         <>
-            <AuthContext.Provider value = {{isAdmin, setJwtToken}}>
+            <AuthContext.Provider value = {{isAdmin, setJwtToken, jwtToken}}>
                 {children}
             </AuthContext.Provider>
         </>

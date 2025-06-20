@@ -7,6 +7,8 @@ import "./GameFull.css"
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
 import FavoriteButton from "./FavoriteButton";
+import EditGameButton from "./EditGameButton";
+import DeleteGameButton from "./DeleteGameButton";
 
 function GameFull() 
 {
@@ -65,9 +67,19 @@ function GameFull()
             />
 
             <div className="gameFullInfo">
+
               <div className="gameFullHeader">
-                <h1>{game.title}</h1>
-                <FavoriteButton giocoId={game.id} stile="gameFullHeart" />
+
+                <div className="gameTitle">
+                  <h1>{game.title}</h1>
+                </div>
+              
+                <div className="gameFullButtons">
+                  <FavoriteButton giocoId={game.id} stile="gameFullHeart" />
+                  <EditGameButton gameId={game.id} stile="gameFullEdit" />
+                  <DeleteGameButton gameId={game.id} stile="gameFullDelete"/>
+                </div>
+                
               </div>
 
               

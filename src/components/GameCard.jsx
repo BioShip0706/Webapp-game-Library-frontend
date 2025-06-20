@@ -48,10 +48,13 @@ function GameCard({gioco})
                     {/* <div className="gioco-cuore" onClick={handlePreferito}>
                             {favoriteIds.includes(gioco.id) ? "💖" : "🤍"} 
                         </div> */}
+
                     <Link to={`/game/${gioco.id}`} key={gioco.id} className="gioco">
-                        <FavoriteButton giocoId={gioco.id} stile="gameCardHeart" className="gioco-cuore" />
-                        <EditGameButton className="gioco-edit"></EditGameButton>
-                        <DeleteGameButton className="gioco-delete"></DeleteGameButton>
+
+                        <FavoriteButton giocoId={gioco.id} stile="gameCardHeart"/>
+                        <EditGameButton gameId={gioco.id} stile="gioco-edit"></EditGameButton>
+                        <DeleteGameButton gameId={gioco.id} stile="gioco-delete"></DeleteGameButton>
+
                         {/*<button className="gioco-edit">EDIT 🖋️</button>*/}
                         {/*<button className="gioco-delete">DELETE ❌</button>*/}
 
@@ -65,6 +68,7 @@ function GameCard({gioco})
                             </div>
                             <span className="gioco-voto">{gioco.score} ⭐</span>
                         </div>
+
                     </Link>
 
 
