@@ -75,6 +75,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    max-height: 150px; /* Altezza massima prima di attivare lo scroll */
+    overflow-y: auto;
+    padding-right: 5px; /* Spazio per scrollbar */
+    scrollbar-width: auto; /* Firefox */
+    scrollbar-color: #00aaff transparent; /* Firefox */
+    background-color: #00000079;
+    padding: 10px;
+
 }
 
 .gameform-checkbox-group label {
@@ -123,23 +131,50 @@
     background-color: #008fcc;
 }
 
+
 .gameform-new-game-created {
-    margin-top: 20px;
+    margin: 20px auto;
     text-align: center;
 }
 
 .gameform-new-game-created a {
-    color: #00aaff;
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #168d1c;
+    color: white;
+    font-size: 1.2rem;
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none;
+    border-radius: 10px;
+
 }
 
 .gameform-new-game-created a:hover {
-    color: #00cfff;
+    
+    transform: scale(1.05);
 }
 
-p[style*="color: red"] {
-    margin-top: 10px;
-    text-align: center;
+
+.gameform-error-message {
+    color: red;
     font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.gameform-game-found {
+  background-color: #007BFF; /* un blu standard, tipo Bootstrap */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.gameform-game-found:hover {
+  background-color: #0056b3; /* blu più scuro al passaggio del mouse */
 }

@@ -6,9 +6,19 @@ import { useContext } from 'react';
 import { FavoriteContext } from '../store/FavoriteContext';
 import Navbar from './Navbar';
 import { AuthContext } from '../store/AuthContext';
+import { useEffect } from 'react';
 
 function Login() 
 {
+    const {jwtToken, setJwtToken} = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+            if (jwtToken) 
+            {
+                navigate("/", { replace: true }); // oppure navigate("/login") se preferisci
+            }
+        }, [jwtToken,navigate]);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +26,6 @@ function Login()
     const [errorMessage, setErrorMessage] = useState('');
 
 
-    const navigate = useNavigate();
 
     const signUpData =
     {
@@ -26,7 +35,6 @@ function Login()
 
     const {setUserId} = useContext(FavoriteContext)
 
-    const {setJwtToken} = useContext(AuthContext)
 
     async function handleRegister(e)
     {

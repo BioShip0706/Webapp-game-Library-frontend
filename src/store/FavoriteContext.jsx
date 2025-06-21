@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 //import { useLocation } from "react-router-dom";
+import { AuthContext } from '../store/AuthContext';
 
 export const FavoriteContext = createContext();
 
@@ -9,6 +10,8 @@ function FavoriteContextProvider({children})
 
 
     const [userId,setUserId] =  useState(localStorage.getItem("id") || null);
+
+    const {jwtToken} = useContext(AuthContext) //usarlo come bearer per i preferiti
     
     useEffect(() => 
     {

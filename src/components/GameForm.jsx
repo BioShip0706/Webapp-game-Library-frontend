@@ -6,13 +6,31 @@ import "./GameForm.css"
 import { AuthContext } from '../store/AuthContext';
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function GameForm()
 {
+    
+    const {isAdmin, jwtToken} = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAdmin === false) 
+        {
+            navigate("/", { replace: true }); // oppure navigate("/login") se preferisci
+        }
+    }, [isAdmin, navigate]);
+
     const location = useLocation();
     const {gameId, action} = location.state || {};
 
-    const {jwtToken} = useContext(AuthContext)
+
+
+
+    
+
+
+    
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -30,6 +48,9 @@ function GameForm()
 
     const [newGameUrl,setNewGameUrl] = useState(null);
 
+    const[existingGameId,setExistingGameId] = useState(null);
+
+
     // const [platformOptions, setPlatformOptions] = useState([]); // Riempili da backend o mock
     // const [genreOptions, setGenreOptions] = useState([]);       // Riempili da backend o mock
 
@@ -37,12 +58,15 @@ function GameForm()
 
     useEffect(() =>{
 
+
+
         fetch("http://localhost:8080/genre/getAllGenres").then(response => response.json()).then(data => setGenres(data)) //prendo in ogni caso tutti i generi
 
         fetch("http://localhost:8080/platform/getAllPlatforms").then(response => response.json()).then(data => setPlatforms(data)) //prendo  tutti le piattaforme
 
         if(action === "EDIT" && gameId)
         {
+            setExistingGameId(null)
 
             fetch(`http://localhost:8080/game/getGameById/${gameId}`)
             .then(response => {
@@ -107,7 +131,7 @@ function GameForm()
             setSelectedPlatforms(prev => prev.filter(p => p !== id)); //prendi tutte le piattaforme selezionate e rimuovi quella dove l'id è uguale a quella che ho appena scelto
         }
 
-        console.log(selectedPlatforms)
+        //console.log(selectedPlatforms)
     }
 
     function handleGenreSelection(e)
@@ -123,7 +147,45 @@ function GameForm()
             setSelectedGenre(prev => prev.filter(p => p !== id)); 
         }
 
-        console.log(selectedGenres)
+        //console.log(selectedGenres)
+
+    }
+
+    function checkTitle() //come finisco di scrivere il titolo viene chiamato
+    {
+
+        if(action !== "ADD" || !title.trim())
+        {
+            console.log("sei in edit");
+            return;
+        }
+
+        fetch(`http://localhost:8080/game/getGameIdByTitle?title=${title}`)
+        .then(response => {
+            if (!response.ok) 
+            {
+                throw new Error("Response not ok")
+            }
+            return response.text(); // anche se è Long, arriva come stringa
+        })
+        .then(data => {
+            const existingGameId = parseInt(data);
+
+
+            if (isNaN(existingGameId)) 
+            {
+                setExistingGameId(null);
+            } 
+            else 
+            {
+                setExistingGameId(existingGameId);
+            }
+
+            
+        })
+        .catch( err => {
+            setExistingGameId(null);
+        })
 
     }
 
@@ -170,13 +232,16 @@ function GameForm()
 
             if(!response.ok)
             {
-                setErrorMessage(response.text());
-                return;
+                return response.text().then(errorText => { //ritorna sempre una stringa (backend -  response entity body)
+                    console.log(errorText);
+                    setErrorMessage(errorText);
+                    throw new Error(errorText);
+                });
             }
 
             if(fetchMethod === "POST")
             {
-                return response.json(); //l'id del gioco che ottengo dopo l'add
+                return response.json(); //Per add game, se va a buon fine ritorno l'id del gioco appena inserito
             }
             else if( fetchMethod === "PUT")
             {
@@ -187,16 +252,18 @@ function GameForm()
         .then(data => {
             if(fetchMethod === "POST")
             {
+                setErrorMessage("");
                 setNewGameUrl(`/game/${data}`)
             }
             else if(fetchMethod === "PUT")
             {
+                setErrorMessage("")
                 alert(data);
             }
 
         })
         .catch(err => {
-        setErrorMessage(err.message || "Errore durante la richiesta");
+        setErrorMessage(err.message || "Error during request");
     });
 
     }
@@ -219,8 +286,24 @@ function GameForm()
 
                         <div className="gameform-input-group">
                             <label>Title</label>
-                            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+                            <input type="text" value={title} onChange={(e) => {setTitle(e.target.value); setExistingGameId(null)}} onBlur={checkTitle} required /> {/*Quando finisco di scrivere controllo se esiste. Se sì, passo a Edit*/}
+
+                            {/* {existingGameId && 
+                                <button className="gameform-game-found" type="button" onClick={() => navigate('/gameForm', { state: { gameId: existingGameId, action: "EDIT" } })}>
+                                    "<b><u>{title}</u></b>" found. Switch to edit.
+                                </button>
+                            } */}
+
+                            {action === "ADD" && existingGameId ? (
+                                <button className="gameform-game-found" type="button" onClick={() => navigate('/gameForm', { state: { gameId: existingGameId, action: "EDIT" } })}>
+                                    "<b><u>{title}</u></b>" found. Switch to edit.
+                                </button>)
+                                : action === "ADD" && 
+                                (<span>If an EXACT match is found, the edit button will appear here instead</span>)}
+
                         </div>
+
+
 
                         <div className="gameform-input-group">
                             <label>Description</label>
@@ -265,7 +348,7 @@ function GameForm()
                                 {platforms.map(platform => (
                                 <label key={platform.id}>
                                  <input type="checkbox" value={platform.id} checked={selectedPlatforms.includes(platform.id)} onChange={handlePlatformSelection}/>
-                                 {platform.name}
+                                 <span>{platform.name}</span>
                                 </label>
                                 ))}
                             </div>
@@ -287,11 +370,11 @@ function GameForm()
 
                         {newGameUrl && (
                             <div className="gameform-new-game-created">
-                                {newGameUrl && <Link to={newGameUrl}>NEW GAME CREATED, CLICK ME TO VIEW!</Link>}
+                                {newGameUrl && <a href={newGameUrl} target="_blank">NEW GAME CREATED: {newGameUrl} </a>}
                             </div>
                         )}
 
-                        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                        {errorMessage && <p className="gameform-error-message">{errorMessage}</p>}
 
                         <button type="submit" className="gameform-submit-button">Submit</button>
                     </form>
