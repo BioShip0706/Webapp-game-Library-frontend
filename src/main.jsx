@@ -15,6 +15,10 @@ import FavoriteContextProvider from './store/FavoriteContext'
 import AuthContextProvider from './store/AuthContext'
 import GameForm from './components/GameForm'
 
+
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",

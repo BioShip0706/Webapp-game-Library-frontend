@@ -18,7 +18,7 @@ function Navbar()
 
   const {setUserId} = useContext(FavoriteContext)
 
-  const {setJwtToken} = useContext(AuthContext)
+  const {isAdmin, setJwtToken} = useContext(AuthContext)
 
 
   useEffect(() => {
@@ -82,9 +82,10 @@ function Navbar()
                         alt="User Icon"
                         className="icon-user"
                       />
-                      {username}
+                      {username + (isAdmin ? " [ADMIN]" : "")}
 
                       <div className="dropdown-content">
+                        <Link to="/gameForm" state={{action: "ADD"}}>Add a Game</Link>
                         <Link to="/favorites">Favorites</Link>
                         <div onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</div>
                       </div>

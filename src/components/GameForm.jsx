@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import "./GameForm.css"
 import { AuthContext } from '../store/AuthContext';
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 function GameForm()
 {
@@ -27,7 +28,7 @@ function GameForm()
     const [selectedGenres, setSelectedGenre] = useState([]);
     const [selectedPlatforms, setSelectedPlatforms] = useState([]);
 
-    const [newGameUrl,setNewGameUrl] = useState();
+    const [newGameUrl,setNewGameUrl] = useState(null);
 
     // const [platformOptions, setPlatformOptions] = useState([]); // Riempili da backend o mock
     // const [genreOptions, setGenreOptions] = useState([]);       // Riempili da backend o mock
@@ -65,7 +66,7 @@ function GameForm()
                 setSelectedPlatforms(data.platforms ? data.platforms.map(platform => platform.id) : []);
                 setSelectedGenre(data.genres ? data.genres.map(genre => genre.id) : []);
                 
-                // setGenres(data.genres?.map(g => g.id) || []);
+                
             })
             .catch(err => {
                     console.error(err);
@@ -74,9 +75,10 @@ function GameForm()
 
 
         }
-        else
+        else if(action === "ADD")
         {
-            // Modalità ADD: resetta i campi
+            console.log("ricevuto un add")
+            //ADD: resetta i campi
             setTitle("");
             setDescription("");
             setDeveloper("");
@@ -84,8 +86,8 @@ function GameForm()
             setReleaseDate("");
             setScore("");
             setImageURL("");
-            setPlatforms([]);
-            setGenres([]);
+            setSelectedPlatforms([]);
+            setSelectedGenre([]);
         }
 
 
@@ -142,7 +144,16 @@ function GameForm()
             genresIds: selectedGenres
         };
 
-        const fetchMethod = action === "EDIT" ? "PUT" : "POST";
+        let fetchMethod;
+
+        if(action === "EDIT")
+        {
+            fetchMethod = "PUT"
+        }
+        else if(action === "ADD")
+        {
+            fetchMethod = "POST"
+        }
 
         const url = action === "EDIT" ? `http://localhost:8080/game/editGameById?gameId=${gameId}` : `http://localhost:8080/game/addNewGame`;
 
@@ -153,6 +164,7 @@ function GameForm()
             "Authorization": `Bearer ${jwtToken}`
             },
             body: JSON.stringify(gameRequest)
+            
         })
         .then(response => {
 
@@ -197,48 +209,59 @@ function GameForm()
 
                 <div className="game-form-box">
 
-                    <h2>Add / Edit Game</h2>
+                
 
                     <form onSubmit={handleSubmit}>
-                        <div className="input-group">
+
+                        <div className="gameform-title-header">
+                            <h2>{action === "EDIT" ? "Edit Game" : "Add new game"}</h2>
+                        </div>
+
+                        <div className="gameform-input-group">
                             <label>Title</label>
                             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
                         </div>
 
-                        <div className="input-group">
+                        <div className="gameform-input-group">
                             <label>Description</label>
                             <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
                         </div>
 
-                        <div className="input-group">
+                        <div className="gameform-input-group">
                             <label>Developer</label>
                             <input type="text" value={developer} onChange={(e) => setDeveloper(e.target.value)} required />
                         </div>
 
-                        <div className="input-group">
+                        <div className="gameform-input-group">
                             <label>Publisher</label>
                             <input type="text" value={publisher} onChange={(e) => setPublisher(e.target.value)} required />
                         </div>
 
-                        <div className="input-group">
+                        <div className="gameform-input-group">
                             <label>Release Date</label>
                             <input type="date" value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} required />
                         </div>
 
-                        <div className="input-group">
+                        <div className="gameform-input-group">
                             <label>Score</label>
                             <input type="number" min="0" max="10" step="0.1" value={score} onChange={(e) => setScore(e.target.value)} required />
                         </div>
 
-                        <div className="input-group">
+                        <div className="gameform-input-group">
                             <label>Image URL</label>
                             <input type="url" value={imageURL} onChange={(e) => setImageURL(e.target.value)} required />
                         </div>
 
+                        {imageURL && (
+                            <div className="gameform-image-preview">
+                                <img src={imageURL} alt="PHOTO PREVIEW HERE" />
+                            </div>
+                        )}
 
-                        <div className="input-group">
+
+                        <div className="gameform-input-group">
                             <label>Platforms</label>
-                            <div className="checkbox-group">
+                            <div className="gameform-checkbox-group">
                                 {platforms.map(platform => (
                                 <label key={platform.id}>
                                  <input type="checkbox" value={platform.id} checked={selectedPlatforms.includes(platform.id)} onChange={handlePlatformSelection}/>
@@ -248,9 +271,9 @@ function GameForm()
                             </div>
                         </div>
 
-                        <div className="input-group">
+                        <div className="gameform-input-group">
                             <label>Genres</label>
-                            <div className="checkbox-group">
+                            <div className="gameform-checkbox-group">
                                 {genres.map(genre => (
                                 <label key={genre.id}>
                                  <input type="checkbox" value={genre.id} checked={selectedGenres.includes(genre.id)} onChange={handleGenreSelection}/>
@@ -260,16 +283,17 @@ function GameForm()
                             </div>
                         </div>
                         
-                        <div className="image-preview">
-                            <img src={imageURL} alt="PHOTO PREVIEW HERE"/>
-                        </div>
-
                         
-                        {newGameUrl && <p style={{ color: 'red' }}>{newGameUrl}</p>}    
+
+                        {newGameUrl && (
+                            <div className="gameform-new-game-created">
+                                {newGameUrl && <Link to={newGameUrl}>NEW GAME CREATED, CLICK ME TO VIEW!</Link>}
+                            </div>
+                        )}
 
                         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
-                        <button type="submit" className="submit-button">Submit</button>
+                        <button type="submit" className="gameform-submit-button">Submit</button>
                     </form>
 
                 </div>

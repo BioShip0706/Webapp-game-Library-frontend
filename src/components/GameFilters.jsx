@@ -180,7 +180,7 @@ function GameFilters({filterFavorites})
 
 
                 <label>Score:</label>
-                <select onChange={handleSelezioneValutazione} defaultValue="" value={scoreOrder}>
+                <select onChange={handleSelezioneValutazione}  value={scoreOrder}>
 
                     <option value="">-- No order --</option>
                     <option value="asc">-- Ascending order --</option>
@@ -190,7 +190,7 @@ function GameFilters({filterFavorites})
                 </select>
 
                 <label>Release Year:</label>
-                <select onChange={handleSelezioneDataRilascio} defaultValue="" value={releaseDateOrder}>
+                <select onChange={handleSelezioneDataRilascio} value={releaseDateOrder}>
 
                     <option value="">-- No order --</option>
                     <option value="asc">-- Ascending order --</option>
