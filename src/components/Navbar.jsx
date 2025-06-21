@@ -85,7 +85,7 @@ function Navbar()
                       {username + (isAdmin ? " [ADMIN]" : "")}
 
                       <div className="dropdown-content">
-                        <Link to="/gameForm" state={{action: "ADD"}}>Add a Game</Link>
+                       {isAdmin && <Link to="/gameForm" state={{action: "ADD"}}>Add a Game</Link>}
                         <Link to="/favorites">Favorites</Link>
                         <div onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</div>
                       </div>

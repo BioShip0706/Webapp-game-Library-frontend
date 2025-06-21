@@ -18,7 +18,9 @@ function FavoriteContextProvider({children})
         console.log("modifica all'userid!")
         if(userId)
         {
-            fetch(`http://localhost:8080/favorite/getAllFavoriteGamesIds?userId=${userId}`).then(response => response.json()).then(data => setFavoriteIds(data))
+            fetch(`http://localhost:8080/favorite/getAllFavoriteGamesIds?userId=${userId}`,
+                {headers: {'Authorization': `Bearer ${jwtToken}`}
+            } ).then(response => response.json()).then(data => setFavoriteIds(data))
         }
         else
         {

@@ -108,8 +108,8 @@ function GameForm()
             setDeveloper("");
             setPublisher("");
             setReleaseDate("");
-            setScore("");
-            setImageURL("");
+            setScore(1);
+            setImageURL("https://img.freepik.com/premium-vector/stick-controller-art_262962-218.jpg");
             setSelectedPlatforms([]);
             setSelectedGenre([]);
         }
@@ -286,7 +286,8 @@ function GameForm()
 
                         <div className="gameform-input-group">
                             <label>Title</label>
-                            <input type="text" value={title} onChange={(e) => {setTitle(e.target.value); setExistingGameId(null)}} onBlur={checkTitle} required /> {/*Quando finisco di scrivere controllo se esiste. Se sì, passo a Edit*/}
+                            <input minLength={1}
+                                 maxLength={150} type="text" value={title} onChange={(e) => {setTitle(e.target.value); setExistingGameId(null)}} onBlur={checkTitle} required /> {/*Quando finisco di scrivere controllo se esiste. Se sì, passo a Edit*/}
 
                             {/* {existingGameId && 
                                 <button className="gameform-game-found" type="button" onClick={() => navigate('/gameForm', { state: { gameId: existingGameId, action: "EDIT" } })}>
@@ -307,17 +308,20 @@ function GameForm()
 
                         <div className="gameform-input-group">
                             <label>Description</label>
-                            <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
+                            <textarea minLength={10}
+                                 maxLength={300} value={description} onChange={(e) => setDescription(e.target.value)} required />
                         </div>
 
                         <div className="gameform-input-group">
                             <label>Developer</label>
-                            <input type="text" value={developer} onChange={(e) => setDeveloper(e.target.value)} required />
+                            <input minLength={1}
+                                 maxLength={100} type="text" value={developer} onChange={(e) => setDeveloper(e.target.value)} required />
                         </div>
 
                         <div className="gameform-input-group">
                             <label>Publisher</label>
-                            <input type="text" value={publisher} onChange={(e) => setPublisher(e.target.value)} required />
+                            <input minLength={1}
+                                 maxLength={100} type="text" value={publisher} onChange={(e) => setPublisher(e.target.value)} required />
                         </div>
 
                         <div className="gameform-input-group">
@@ -327,7 +331,7 @@ function GameForm()
 
                         <div className="gameform-input-group">
                             <label>Score</label>
-                            <input type="number" min="0" max="10" step="0.1" value={score} onChange={(e) => setScore(e.target.value)} required />
+                            <input type="number" min="1" max="10" step="0.1" value={score} onChange={(e) => setScore(e.target.value)} required />
                         </div>
 
                         <div className="gameform-input-group">
