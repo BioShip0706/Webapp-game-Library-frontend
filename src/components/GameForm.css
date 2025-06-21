@@ -75,7 +75,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    max-height: 150px; /* Altezza massima prima di attivare lo scroll */
+    max-height: 200px; /* Altezza massima prima di attivare lo scroll */
     overflow-y: auto;
     padding-right: 5px; /* Spazio per scrollbar */
     scrollbar-width: auto; /* Firefox */
