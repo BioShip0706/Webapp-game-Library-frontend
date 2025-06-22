@@ -14,6 +14,8 @@ import FavoriteGames from './components/FavoriteGames'
 import FavoriteContextProvider from './store/FavoriteContext'
 import AuthContextProvider from './store/AuthContext'
 import GameForm from './components/GameForm'
+import SearchedGames from './components/SearchedGames'
+
 
 
 
@@ -51,6 +53,10 @@ const router = createBrowserRouter([
   {
     path: "/gameForm",
     element: <GameForm></GameForm>
+  },
+  {
+    path: "/searchedGames",
+    element: <SearchedGames></SearchedGames>
   }
 
 ]);

@@ -10,8 +10,9 @@ import "./GameFilters.css"
 
 
 
-function GameFilters({filterFavorites})
+function GameFilters({filterFavorites, title}) //non perdo filterFavorites perchè sto navigando sempre allo stesso componente senza mai "smontarlo e ricaricarlo"
 {
+    console.log(title)
 
     const {favoriteIds} = useContext(FavoriteContext)
 
@@ -23,13 +24,20 @@ function GameFilters({filterFavorites})
 
     //provo a riprendere i filtri se ci sono
     const location = useLocation();
-    const { generiSelezionati: inizialiGeneri = [], piattaformeSelezionate: inizialiPiattaforme = [], scoreOrder: scoreIniziale = "", releaseDateOrder: releaseIniziale = "" } = location.state || {}; //dallo state prendo generiSelezionati e lo metto dentro una variabile array vuoto [], e poi prendo dallo state
+
+    const { generiSelezionati: inizialiGeneri = [],  
+        piattaformeSelezionate: inizialiPiattaforme = [], 
+        scoreOrder: scoreIniziale = "", 
+        releaseDateOrder: releaseIniziale = ""} = location.state || {}; //dallo state prendo questi campi (es. title e lo inizializzo con titleIniziale, altrimenti con {})
+
 
     const [generiSelezionati, setGeneriSelezionati] = useState(inizialiGeneri);
     const [piattaformeSelezionate, setPiattaformeSelezionate] = useState(inizialiPiattaforme);
 
     const [scoreOrder, setScoreOrder] = useState(scoreIniziale);
     const [releaseDateOrder,setReleaseDateOrder] = useState(releaseIniziale);
+
+    //const [titolo, setTitolo] = useState(title);
 
     const navigate = useNavigate();
 
@@ -95,6 +103,12 @@ function GameFilters({filterFavorites})
         if(filterFavorites)
         {
             queryString += `&favoriteIds=${favoriteIds}`;
+            console.log("Favorites Idsss: ", favoriteIds)
+        }
+
+        if(title)
+        {
+            queryString += `&title=${encodeURIComponent(title)}`; //Breath of diventa Breath%20of
         }
 
         console.log("QueryString è " + queryString)
@@ -105,7 +119,7 @@ function GameFilters({filterFavorites})
                 search: queryString,
             },
             {
-                state: {generiSelezionati: generiSelezionati, piattaformeSelezionate: piattaformeSelezionate, scoreOrder: scoreOrder, releaseDateOrder: releaseDateOrder, filterFavorites: filterFavorites},
+                state: {generiSelezionati: generiSelezionati, piattaformeSelezionate: piattaformeSelezionate, scoreOrder: scoreOrder, releaseDateOrder: releaseDateOrder, filterFavorites: filterFavorites, title: title},
             }
         );
 

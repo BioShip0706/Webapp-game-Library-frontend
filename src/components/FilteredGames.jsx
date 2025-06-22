@@ -29,6 +29,8 @@ function FilteredGames()
     
     const { filterFavorites } = location.state || false;
 
+    const {title} = location.state || null;
+
     //link intero http://localhost:8080/game/filterGames?genreIds=1&platformIds=3&scoreOrder=asc&releaseDateOrder=desc&favoriteIds=1&page=0&perPage=10
 
     useEffect(() => 
@@ -39,8 +41,10 @@ function FilteredGames()
         const scoreOrder = params.get("scoreOrder");
         const releaseDateOrder = params.get("releaseDateOrder");
         const favoriteIds = params.get("favoriteIds") || null;
+        const title = params.get("title") || null;
 
         console.log("i platform ids sono: " , platformIds)
+        console.log("i favoriteIds ids sono: " , favoriteIds)
 
         //se arrivo dal filtro
         //const {generiSelezionati, piattaformeSelezionate} = location.state || {}; //se ci sono altrimenti inizializzali vuoti
@@ -74,6 +78,11 @@ function FilteredGames()
             queryParams.push(`favoriteIds=${favoriteIds}`);
         }
 
+        if(title)
+        {
+            queryParams.push(`title=${title}`)
+        }
+
         queryParams.push(`page=${currentPage}`)
         queryParams.push(`perPage=${gamesPerPage}`)
 
@@ -90,7 +99,7 @@ function FilteredGames()
         // }
 
         url += queryParams.join("&"); //ogni elemento di questo array viene aggiunto all'url con un & alla fine
-        console.log(url)
+        console.log("L'url con query params +" ,url)
 
         fetch(url).then((response) => response.json()).then((data) => {setGiochi(data.content); setTotalCount(data.totalElements)}).catch((error) => console.error("Errore fetch giochi:", error));
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -102,7 +111,7 @@ function FilteredGames()
             <div className="allgames-wrapper">
 
 
-                    <GameFilters filterFavorites={filterFavorites} />
+                    <GameFilters filterFavorites={filterFavorites} title={title} />
 
                     <div className="games-container">
 

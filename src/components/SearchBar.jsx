@@ -23,10 +23,16 @@ function SearchBar()
     function submitRedirectClean(e)
     {
         e.preventDefault()
-        if(games.length > 0)
-        {
-            navigate(`/game/${games[0].id}`)
-        }
+        // if(games.length > 0)
+        // {
+        //     //navigate(`/game/${games[0].id}`)
+        //     console.log("Invio queste lettere: ", letters)
+        //     //navigate('/searchedGames');
+        //     //navigate(`/searchedGames?title=${encodeURIComponent(letters)}`);
+        //     navigate(`/searchedGames?title=${encodeURIComponent(letters)}`);
+
+        // }
+        navigate(`/searchedGames?title=${encodeURIComponent(letters)}`);
         setGames([]);
     }
 

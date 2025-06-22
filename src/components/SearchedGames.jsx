@@ -13,17 +13,23 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Pagination from "./Pagination";
 
-function FavoriteGames({filterFavorites})
+
+function SearchedGames()
 {
+  
     const [giochi,setGiochi] = useState([])
     
-    const {favoriteIds, setFavoriteIds, userId} = useContext(FavoriteContext)
+    //const {favoriteIds, setFavoriteIds, userId} = useContext(FavoriteContext)
 
     const navigate = useNavigate();
     const location = useLocation();
 
+    
     const searchParams = new URLSearchParams(location.search);
-    const pageFromUrl = parseInt(searchParams.get("page")) || 1; //prendo dall'url la pagina altrimento setto a 1
+    const pageFromUrl = parseInt(searchParams.get("page")) || 1; //prendo dall'url la pagina altrimento setto a 1ù
+
+    const titleFromUrl = searchParams.get("title") || null;
+
 
     const [currentPage, setCurrentPage] = useState(pageFromUrl);
     const [totalCount, setTotalCount] = useState(0);
@@ -38,29 +44,28 @@ function FavoriteGames({filterFavorites})
 
     useEffect(() => {
 
-        if(favoriteIds.length === 0)
+        console.log("Ho ricevuto questo titolo: " ,titleFromUrl)
+
+        if(!titleFromUrl)
         {
+            //navigate("/")
             return;
         }
 
-        let favoriteQuery = "";
-        if (favoriteIds.length > 0) 
-        {
-            favoriteQuery = favoriteIds.map(id => `favoriteIds=${id}`).join("&");
-        }
-        const url = `http://localhost:8080/game/filterGames?${favoriteQuery}&page=${currentPage}&perPage=${gamesPerPage}`;
+        
+        const url = `http://localhost:8080/game/filterGames?title=${encodeURIComponent(titleFromUrl)}&page=${currentPage}&perPage=${gamesPerPage}`;
         fetch(url)
         .then(response => response.json())
         .then(data => { setGiochi(data.content); setTotalCount(data.totalElements)});
 
-        const expectedSearch = `?page=${currentPage}`;
-        if (location.search !== expectedSearch) 
-        {
-            navigate({ pathname: "/favorites", search: expectedSearch });
+        const expectedSearch = `?title=${titleFromUrl}&page=${currentPage}`;
+
+        if (location.search !== expectedSearch) {
+            navigate({ pathname: "/searchedGames", search: expectedSearch });
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, [currentPage, navigate, favoriteIds,location.search]);
+    }, [currentPage, navigate, titleFromUrl,location.search]);
 
     
 
@@ -74,10 +79,10 @@ function FavoriteGames({filterFavorites})
 
             <div className="allgames-wrapper">
                 
-                <GameFilters  filterFavorites = {filterFavorites}/>
+                <GameFilters  title = {titleFromUrl}/>
                 
                 <div className="games-container">
-                    {giochi.length === 0 ? (<div className="no-games-message">You have no favorite games</div>) :
+                    {giochi.length === 0 ? (<div className="no-games-message">No games found with that name</div>) :
                     (giochi.map(gioco => (
                         //<Link to={`/game/${gioco.id}`} key={gioco.id} state={{gioco}}>
                             <GameCard key={gioco.id} gioco={gioco} />
@@ -95,4 +100,5 @@ function FavoriteGames({filterFavorites})
     )
 }
 
-export default FavoriteGames;
+
+export default SearchedGames;
