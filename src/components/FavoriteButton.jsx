@@ -22,6 +22,7 @@ function FavoriteButton({giocoId, stile})
             return;
         }
 
+        console.log("Gli id preferiti sono: ",favoriteIds)
         
         console.log("iL GAME ID RICEVUTO è: " + giocoId)
         
@@ -36,6 +37,7 @@ function FavoriteButton({giocoId, stile})
         }
         else
         {
+            //aggiungi gioco preferito
             setFavoriteIds([...favoriteIds,giocoId]);
             fetch(`http://localhost:8080/favorite/addNewFavoriteGame?userId=${userId}&gameId=${giocoId}`, 
                 {method: 'POST',

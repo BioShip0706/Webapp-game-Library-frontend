@@ -28,7 +28,7 @@ function FavoriteContextProvider({children})
         }
         
 
-    },[userId])
+    },[userId,jwtToken])
 
     return (
         <FavoriteContext.Provider value={{favoriteIds,setFavoriteIds, setUserId, userId}}>

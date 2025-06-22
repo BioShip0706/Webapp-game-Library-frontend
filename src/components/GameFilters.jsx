@@ -12,7 +12,7 @@ import "./GameFilters.css"
 
 function GameFilters({filterFavorites, title}) //non perdo filterFavorites perchè sto navigando sempre allo stesso componente senza mai "smontarlo e ricaricarlo"
 {
-    console.log(title)
+    //console.log(title)
 
     const {favoriteIds} = useContext(FavoriteContext)
 

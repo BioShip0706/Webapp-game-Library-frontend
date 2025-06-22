@@ -40,6 +40,8 @@ function FavoriteGames({filterFavorites})
 
         if(favoriteIds.length === 0)
         {
+           setGiochi([]);
+           console.log("finiti giochi preferiti")
             return;
         }
 
@@ -77,7 +79,7 @@ function FavoriteGames({filterFavorites})
                 <GameFilters  filterFavorites = {filterFavorites}/>
                 
                 <div className="games-container">
-                    {giochi.length === 0 ? (<div className="no-games-message">You have no favorite games</div>) :
+                    {favoriteIds.length === 0 ? (<div className="no-games-message">You have no favorite games</div>) :
                     (giochi.map(gioco => (
                         //<Link to={`/game/${gioco.id}`} key={gioco.id} state={{gioco}}>
                             <GameCard key={gioco.id} gioco={gioco} />
