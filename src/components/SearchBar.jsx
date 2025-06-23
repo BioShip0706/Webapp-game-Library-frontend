@@ -50,7 +50,7 @@ function SearchBar()
             return;
         }
 
-        fetch(`http://localhost:8080/game/searchGame/${letters}`).then(response => response.json()).then(data => setGames(data));
+        fetch(`http://localhost:8080/game/searchGame?title=${encodeURIComponent(letters)}`).then(response => response.json()).then(data => setGames(data));
 
     },[letters])
 
