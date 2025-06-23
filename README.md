@@ -1,12 +1,63 @@
-# React + Vite
+<h1 align="center">Game Library - WebApp JAVA/REACT/SQL</h1> <p align="center"> <em>Webapp game library <br>Discovers games, filter or search them by title. <br>Login or register to add them to favorites<br> Login as admin to gain advanced functionalities like "Deleting, Editing or adding a game" <br>Developed using IntelliJ and Visual Studio Code</em> </p><br>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h2>Backend Here: https://github.com/BioShip0706/WebApp-GameLibrary-backend
+<br>
+<h2>YOUTUBE VIDEO 📽️ How it works:</h2>
 
-Currently, two official plugins are available:
+[![Watch the video](https://github.com/user-attachments/assets/aaaca383-4ace-4de6-aff4-5d38fddc8bd0)](https://youtu.be/Otk06qY8Xok?si=ewlQ17Y7GqqXZZae)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+
+<h2>🎮 How to setup:</h2>
+<ol>
+    <li>Download the source code.</li>
+    <li>Edit environment variables*.</li>
+    <li>Create database <strong>gamelibrary</strong>.</li>
+    <li>Run the application once.</li>
+    <li>Execute the <strong>.sql</strong> file in the <strong>Game Library backend</strong> repo folder -> src/main/java/resources/gameLibraryGithub.sql  to populate tables.</li>
+    <li>Run frontend with <strong>"npm run dev"</strong>.</li>
+</ol>
+
+<h2>⚙️ Functionalities:</h2>
+<ol>
+  <li>Discover the games.</li>
+  <li>
+    Search them by name. And / Or filter them by:
+    <ul>
+      <li>Genre</li>
+      <li>Platform</li>
+      <li>Score order</li>
+      <li>Release order</li>
+      <li>Or combine all the filters together!</li>
+    </ul>
+  </li>
+  <li>
+    Register and Login as member to add/remove games from your favorites.
+    <br>Scroll your favorite games and filter them if you like.
+  </li>
+  <li>
+    Login as admin to gain advanced functionalities like deleting, editing or adding a game.
+     <br> All secured with JwtToken
+  </li>
+  <li>
+    Admin credentials:<br>
+    <strong>- Username:</strong> AdminUser<br>
+    <strong>- Password:</strong> adminuser
+  </li>
+  <li>Enjoy.</li>
+</ol>
+*DATABASE_MYSQL_HOSTNAME=localhost;DATABASE_MYSQL_NAME=gamelibrary;DATABASE_MYSQL_PASSWORD=root;DATABASE_MYSQL_PORT=3306;DATABASE_MYSQL_USERNAME=root
+
+  
+<h2>🛠️ Technologies used:</h2> 
+<p align="left">
+  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/java.png"  width="80" height="80"/>
+  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/spring_boot.png"  width="80" height="80"/>
+  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/hibernate.png" width="80" height="80"></img>
+  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/react.png" width="80" height="80"></img>
+  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/javascript.png" width="80" height="80"></img>
+  <img src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/html.png" width="80" height="80"></img>
