@@ -1,7 +1,7 @@
 /* Container della barra di ricerca dentro la navbar */
 .search-container {
-  width: 455px;        /* puoi regolare la larghezza */
-  position: absolute;  /* per poter posizionare i risultati in modo assoluto rispetto a questo */
+  width: 455px;        
+  position: absolute;  
   left: 50%;
   transform: translateX(-38%);
 }
@@ -16,22 +16,22 @@
   box-sizing: border-box;
 }
 
-/* Lista risultati posizionata sotto la navbar, fissa e allineata alla searchbar */
+/* Lista risultati  sotto la navbar, allineata alla searchbar */
 .results-list {
-  position: fixed;      /* posizione fissa per rimanere visibile durante scroll */
-  top: 70px;            /* esattamente sotto la navbar alta 80px */
-  left: 50%;            /* centro orizzontale viewport */
+  position: fixed;      /* posizione fissa anche se scrolli */
+  top: 70px;            /* sotto la navbar alta 80px */
+  left: 50%;            /* centrare orizzontalmente  */
   transform: translateX(-50%); /* per centrare la lista */
-  width: 350px;         /* stessa larghezza della search-container */
-  max-height: 500px;    /* altezza massima con scroll interno */
-  overflow-y: auto;     /* scroll verticale se troppi risultati */
+  width: 350px;         
+  max-height: 500px;    
+  overflow-y: auto;     
   background-color: white;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   z-index: 1050;        /* sopra navbar */
 }
 
-/* Ogni singolo risultato */
+/* Ogni  risultato */
 .result-item {
   display: flex;
   justify-content: space-between;

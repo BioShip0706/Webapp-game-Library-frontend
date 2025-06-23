@@ -56,7 +56,7 @@ function FavoriteGames({filterFavorites})
         .then(data => { setGiochi(data.content); setTotalCount(data.totalElements)});
 
         const expectedSearch = `?page=${currentPage}`;
-        if (location.search !== expectedSearch) 
+        if (location.search !== expectedSearch)  //appena entro setta la pagina
         {
             navigate({ pathname: "/favorites", search: expectedSearch });
         }

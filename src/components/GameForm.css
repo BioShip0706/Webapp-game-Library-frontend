@@ -163,7 +163,7 @@
 }
 
 .gameform-game-found {
-  background-color: #007BFF; /* un blu standard, tipo Bootstrap */
+  background-color: #007BFF; 
   color: white;
   border: none;
   padding: 8px 16px;
@@ -176,5 +176,5 @@
 }
 
 .gameform-game-found:hover {
-  background-color: #0056b3; /* blu più scuro al passaggio del mouse */
+  background-color: #0056b3; /* blu più scuro all'hover */
 }

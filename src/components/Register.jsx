@@ -16,7 +16,7 @@ function Register()
     useEffect(() => {
         if (jwtToken) 
         {
-            navigate("/", { replace: true }); // oppure navigate("/login") se preferisci
+            navigate("/", { replace: true }); // oppure navigate("/login") 
         }
     }, [jwtToken,navigate]);
 

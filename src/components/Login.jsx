@@ -16,7 +16,7 @@ function Login()
     useEffect(() => {
             if (jwtToken) 
             {
-                navigate("/", { replace: true }); // oppure navigate("/login") se preferisci
+                navigate("/", { replace: true }); // oppure navigate("/login") 
             }
         }, [jwtToken,navigate]);
 
@@ -38,7 +38,7 @@ function Login()
 
     async function handleRegister(e)
     {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault(); // eivta il refresh della pagina
 
         try {
             const response = await fetch('http://localhost:8080/auth/signin', {
@@ -59,7 +59,7 @@ function Login()
                 localStorage.setItem("id",loginData.id)
                 setUserId(loginData.id)
                 
-                setJwtToken(loginData.token);
+                setJwtToken(loginData.token); //refresha il context
 
                 navigate('/'); // Riporto alla home
             } 

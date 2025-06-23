@@ -3,7 +3,7 @@
   grid-template-columns: 300px 1fr; /* sinistra fissa, destra flessibile */
   gap: 20px;
   padding: 20px;
-  /*min-height: calc(100vh - 60px);*/ /* se hai una navbar */
+  
 }
 
 /* Colonna destra con le cards */

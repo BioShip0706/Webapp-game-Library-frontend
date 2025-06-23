@@ -21,7 +21,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* --- Logo --- */
+/* --- Logo gameLibrary --- */
 .logo {
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@ body {
 /* Bottone utente */
 
 
-/* Dropdown nascosto di base */
+/* Dropdown cliccando su user (display none di base) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -96,7 +96,7 @@ body {
   z-index: 10;
 }
 
-/* Dropdown visibile quando 'show' è attivo . Quando dropdown ha anche show allora chiama .dropdown-content però con questa modifica la display*/
+/* Dropdown visibile quando 'show' è attivo . Quando dropdown ha anche show allora chiama .dropdown-content però con questa modifica il display*/
 .dropdown.show .dropdown-content {
   display: block;
 }

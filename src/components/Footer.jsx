@@ -1,11 +1,11 @@
 import React from 'react';
-import './Footer.css'; // Importa il file CSS per lo styling
+import './Footer.css'; 
 
 function Footer() {
     return (
         <footer className="app-footer">
             <div className="footer-content">
-                <p>&copy; {new Date().getFullYear()} Game Library - By BioShip</p>
+                <p>&copy; {new Date().getFullYear()} Game Library - By BioShip</p> {/*&copy per  il logo copyright */}
                 <nav className="footer-nav">
 
                 </nav>

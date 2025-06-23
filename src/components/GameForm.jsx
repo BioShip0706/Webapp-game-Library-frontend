@@ -17,7 +17,7 @@ function GameForm()
     useEffect(() => {
         if (isAdmin === false) 
         {
-            navigate("/", { replace: true }); // oppure navigate("/login") se preferisci
+            navigate("/", { replace: true }); // oppure navigate("/login") 
         }
     }, [isAdmin, navigate]);
 
@@ -51,8 +51,7 @@ function GameForm()
     const[existingGameId,setExistingGameId] = useState(null);
 
 
-    // const [platformOptions, setPlatformOptions] = useState([]); // Riempili da backend o mock
-    // const [genreOptions, setGenreOptions] = useState([]);       // Riempili da backend o mock
+
 
     //In base all'action ritornare cose diverse
 
@@ -74,7 +73,7 @@ function GameForm()
                 { 
                     // se lo status è diverso da 2xx
                     return response.text().then(text => {
-                    throw new Error(text) // lancio l’errore con il messaggio dal server
+                    throw new Error(text) // lancio l’errore 
                     });
                 }
                 return response.json(); // altrimenti leggo i dati JSON del gioco

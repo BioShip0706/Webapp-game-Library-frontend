@@ -4,7 +4,7 @@
   max-width: 400px;
   margin: 20px auto;
   padding: 15px;
-  background-color: #222;   /* sfondo scuro */
+  background-color: #222;   
   border-radius: 8px;
   box-shadow: 0 4px 8px rgb(0 0 0 / 0.6);
   color: #eee;
@@ -91,8 +91,8 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 5px;
-    width: 100%; /* Make the button full width of its container */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: 100%; 
+    box-sizing: border-box; 
 }
 
 .filter-button:hover {
@@ -117,8 +117,8 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 20px;
-    width: 100%; /* Make the button full width of its container */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: 100%; 
+    box-sizing: border-box; 
     align-items: center;
 }
 

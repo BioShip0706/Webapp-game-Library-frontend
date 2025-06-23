@@ -1,37 +1,29 @@
 .app-footer {
-    background-color: #333; /* Colore di sfondo scuro */
-    color: #fff; /* Testo bianco */
-    padding: 30px 20px; /* Spaziatura interna */
-    text-align: center; /* Centra il testo */
-    margin-top: auto; /* Spinge il footer in fondo alla pagina se il contenuto è scarso */
-    border-top: 1px solid #555; /* Bordo superiore leggero */
+    background-color: #333; 
+    color: #fff; 
+    padding: 30px 20px; 
+    text-align: center; 
+    margin-top: auto; /*footer in fondo alla pagina se il contenuto è poco */
+    border-top: 1px solid #555; 
 }
 
 .footer-content {
-    max-width: 1200px; /* Larghezza massima del contenuto */
-    margin: 0 auto; /* Centra il contenuto orizzontalmente */
+    max-width: 1200px; /* Larghezza massima  */
+    margin: 0 auto; /* Centra  orizzontalmente */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Spazio tra gli elementi principali */
+    gap: 15px; /* Spazio tra  elementi  */
 }
 
-/* Stili per il testo del copyright */
+
 .app-footer p {
     font-size: 0.9rem;
     margin: 0;
 }
 
 /* Stili per la navigazione del footer */
-.footer-nav ul {
-    list-style: none; /* Rimuove i pallini delle liste */
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap; /* Permette ai link di andare a capo su schermi piccoli */
-    justify-content: center;
-    gap: 20px; /* Spazio tra i link */
-}
+
 
 .footer-nav a {
     color: #fff; /* Colore link bianco */
@@ -48,7 +40,7 @@
 .social-links {
     display: flex;
     gap: 15px;
-    margin-top: 10px; /* Spazio sopra i link social */
+    margin-top: 10px; 
 }
 
 .social-links a {
@@ -59,21 +51,17 @@
 }
 
 .social-links a:hover {
-    color: #007bff; /* Cambia colore al passaggio del mouse */
+    color: #007bff; /* Cambia colore all'hover del mouse */
 }
 
 /* Media query per schermi più grandi (opzionale, per layout orizzontale) */
-@media (min-width: 768px) {
-    .footer-content {
-        flex-direction: row; /* Layout orizzontale su schermi più grandi */
-        justify-content: space-between; /* Spazio equo tra gli elementi */
-    }
+.footer-content {
+    flex-direction: row; /* Layout orizzontale su schermi più grandi */
+    justify-content: space-between; /* Spazio equo tra gli elementi */
+}
 
-    .footer-nav ul {
-        gap: 30px;
-    }
 
-    .social-links {
-        margin-top: 0; /* Rimuovi margine superiore se in layout orizzontale */
-    }
+
+.social-links {
+     margin-top: 0; /* Rimuovi margine superiore se in layout orizzontale */
 }

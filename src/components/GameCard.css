@@ -91,7 +91,7 @@
   font-weight: 600;
   font-size: 1rem;
   color: #ddd;
-  flex-shrink: 0; /* impedisce al voto di ridursi o andare a capo */
+  flex-shrink: 0; /* impedisco al voto  di andare a capo */
 }
 
 /* Cuore preferito */
@@ -106,7 +106,7 @@
   font-size: 2rem;
   user-select: none;
   line-height: 1.2;
-  display: none;
+  display: none; /*Normalmente nascosto, all'hover (sotto) mostro */
 
 }
 

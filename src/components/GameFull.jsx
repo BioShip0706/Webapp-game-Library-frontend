@@ -35,7 +35,7 @@ function GameFull()
           if (!response.ok) { 
             // se lo status è diverso da 2xx
             return response.text().then(text => {
-              throw new Error(text) // lancio l’errore con il messaggio dal server
+              throw new Error(text) // lancio l’errore 
             });
           }
           return response.json(); // altrimenti leggo i dati JSON del gioco

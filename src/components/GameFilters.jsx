@@ -10,7 +10,7 @@ import "./GameFilters.css"
 
 
 
-function GameFilters({filterFavorites, title}) //non perdo filterFavorites perchè sto navigando sempre allo stesso componente senza mai "smontarlo e ricaricarlo"
+function GameFilters({filterFavorites, title}) //li ricevo indietro ogni volta
 {
     //console.log(title)
 
@@ -28,7 +28,7 @@ function GameFilters({filterFavorites, title}) //non perdo filterFavorites perch
     const { generiSelezionati: inizialiGeneri = [],  
         piattaformeSelezionate: inizialiPiattaforme = [], 
         scoreOrder: scoreIniziale = "", 
-        releaseDateOrder: releaseIniziale = ""} = location.state || {}; //dallo state prendo questi campi (es. title e lo inizializzo con titleIniziale, altrimenti con {})
+        releaseDateOrder: releaseIniziale = ""} = location.state || {}; //dallo state prendo questi campi , altrimenti inizializzo  con {})
 
 
     const [generiSelezionati, setGeneriSelezionati] = useState(inizialiGeneri);
@@ -55,7 +55,7 @@ function GameFilters({filterFavorites, title}) //non perdo filterFavorites perch
 
     function handleSelezionePiattaforma(e)
     {
-        const selectedPlatform = e.target.value; //prendo per esempio "SWITHC" però il value in questo caso è l'id della piattaforma,
+        const selectedPlatform = e.target.value; //prendo per esempio "SWITCH" però il value in questo caso è l'id della piattaforma,
 
         if(selectedPlatform !== "" && !piattaformeSelezionate.includes(selectedPlatform) && piattaformeSelezionate.length < 3) //se non è già dentro l'array salvo l'id all'interno
         {
@@ -68,7 +68,7 @@ function GameFilters({filterFavorites, title}) //non perdo filterFavorites perch
 
     function handleSelezioneValutazione(e)
     {
-        const selectScoreOrder = e.target.value; //prendo per esempio "SWITHC" però il value in questo caso è l'id della piattaforma,
+        const selectScoreOrder = e.target.value; 
 
         console.log(selectScoreOrder)
         setScoreOrder(selectScoreOrder);
@@ -77,7 +77,7 @@ function GameFilters({filterFavorites, title}) //non perdo filterFavorites perch
 
     function handleSelezioneDataRilascio(e)
     {
-        const selectedReleaseOrder = e.target.value; //prendo per esempio "SWITHC" però il value in questo caso è l'id della piattaforma,
+        const selectedReleaseOrder = e.target.value; 
 
         console.log(selectedReleaseOrder)
         setReleaseDateOrder(selectedReleaseOrder);

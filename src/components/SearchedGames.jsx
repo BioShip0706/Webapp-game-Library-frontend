@@ -26,7 +26,7 @@ function SearchedGames()
 
     
     const searchParams = new URLSearchParams(location.search);
-    const pageFromUrl = parseInt(searchParams.get("page")) || 1; //prendo dall'url la pagina altrimento setto a 1ù
+    const pageFromUrl = parseInt(searchParams.get("page")) || 1; //prendo dall'url la pagina altrimento setto a 1
 
     const titleFromUrl = searchParams.get("title") || null;
 

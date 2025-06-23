@@ -2,7 +2,7 @@
   display: flex;
   gap: 20px;
   padding: 20px;
-  min-height: calc(100vh - 60px); /* Assume navbar è 60px */
+  /*min-height: calc(100vh - 60px);*/ 
 }
 
 /* Filtro a sinistra, verticale */
